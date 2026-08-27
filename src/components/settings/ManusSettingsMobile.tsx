@@ -18,6 +18,8 @@ import {
   LogOut,
   Wallet,
   Gift,
+  Moon,
+  Sun,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useConfirm } from "@/components/common/ConfirmDialog";
@@ -25,6 +27,7 @@ import { useActiveAccount } from "@/hooks/useActiveAccount";
 import { useCredits } from "@/hooks/useCredits";
 import { t as authT, useUserLang } from "@/lib/authI18n";
 import { goBackOr } from "@/lib/navigation";
+import { getStoredTheme, setTheme, type ThemeMode } from "@/lib/theme";
 
 type Row = {
   icon: React.ComponentType<{ className?: string }>;
@@ -85,6 +88,8 @@ const ManusSettingsMobile = () => {
     navigate("/auth");
   };
 
+  const [themeMode, setThemeMode] = useState<ThemeMode>(() => getStoredTheme());
+
   const mainRows: Row[] = [
     { icon: Lightbulb, label: "Knowledge", path: "/settings/memory" },
     { icon: Bell, label: "Notifications", path: "/notifications" },
@@ -100,6 +105,20 @@ const ManusSettingsMobile = () => {
 
   const accountRows: Row[] = [
     { icon: UserRound, label: "Account", path: "/settings/profile/edit" },
+  ];
+
+  const appearanceRows: Row[] = [
+    {
+      icon: themeMode === "dark" ? Moon : Sun,
+      label: "Appearance",
+      trailing: themeMode === "dark" ? "Dark" : themeMode === "system" ? "System" : "Light",
+      chevron: "none",
+      onClick: () => {
+        const next: ThemeMode = themeMode === "light" ? "dark" : themeMode === "dark" ? "system" : "light";
+        setThemeMode(next);
+        setTheme(next);
+      },
+    },
   ];
 
   const linkRows: Row[] = [
