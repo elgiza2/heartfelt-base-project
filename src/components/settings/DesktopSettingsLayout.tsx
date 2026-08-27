@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 import { ArrowLeft, PanelLeft } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useConfirm } from "@/components/common/ConfirmDialog";
-import { useIsDark } from "@/hooks/useThemeMode";
 import AppLayout from "@/layouts/AppLayout";
 import { useSettingsShell } from "@/components/settings/SettingsShell";
 import { useSidebarCollapsed } from "@/hooks/useSidebarCollapsed";
@@ -85,7 +84,6 @@ export function DesktopSettingsLayout({
   const shell = useSettingsShell();
   const [collapsed, setCollapsed, toggleCollapsed] = useSidebarCollapsed();
   const go = (path: string) => navigate(path);
-  const settingsVideoRef = useRef<HTMLVideoElement>(null);
 
   const confirm = useConfirm();
 
