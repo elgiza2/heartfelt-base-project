@@ -175,6 +175,19 @@ html.light .animated-input-shell {
   box-shadow: 0 8px 28px -14px rgba(23, 23, 26, 0.22) !important;
 }
 
+/* Higher-specificity guard: the chat skin sets `border: 0 !important` on the
+   composer, which would otherwise erase the light-theme edge. */
+html.light .chat-composer-frame.composer-card,
+html.light .chat-composer-frame.chat-composer-liquid,
+html.light body .chat-composer-frame {
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: var(--hairline) !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 8px 28px -14px rgba(23, 23, 26, 0.22) !important;
+}
+
+
 html.light .composer-card textarea,
 html.light .chat-composer-frame textarea {
   color: var(--ink-1) !important;
