@@ -83,6 +83,17 @@ export async function markFreestyleFailure(
   retryAfterSec?: number,
 ): Promise<void> {
   if (key.id === "env") return;
+
+  if (key.id.startsWith("pool:")) {
+    const patch: Record<string, unknown> = {
+      failure_count: (key.failure_count ?? 0) + 1,
+      last_error: `${status}: ${message}`.slice(0, 500),
+    };
+    if (status === 401 || status === 402 || status === 403) patch.status = "blocked";
+    await supabase.from("provider_api_keys").update(patch).eq("id", key.id.slice(5));
+    return;
+  }
+
   const patch: Record<string, unknown> = {
     failure_count: (key.failure_count ?? 0) + 1,
     last_error: `${status}: ${message}`.slice(0, 500),
@@ -103,6 +114,15 @@ export async function markFreestyleSuccess(
   key: FreestyleKeyRow,
 ): Promise<void> {
   if (key.id === "env") return;
+
+  if (key.id.startsWith("pool:")) {
+    await supabase
+      .from("provider_api_keys")
+      .update({ last_used_at: new Date().toISOString(), failure_count: 0 })
+      .eq("id", key.id.slice(5));
+    return;
+  }
+
   await supabase
     .from("freestyle_keys")
     .update({
