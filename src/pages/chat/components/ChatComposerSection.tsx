@@ -195,7 +195,18 @@ export function ChatComposerSection(props: ChatComposerSectionProps) {
                 </div>
               </div>
 
-              {/* Desktop chips row removed by design: modes live in the + menu. */}
+              {/* Desktop-only starter chips below the composer (icons, no images). */}
+              {isEmpty ? (
+                <StarterChips
+                  className="mt-3"
+                  onPick={(_prompt, mode) => {
+                    if (mode) {
+                      d.handleModeChange?.(mode);
+                      setModesShown(false);
+                    }
+                  }}
+                />
+              ) : null}
 
             </div>
 
