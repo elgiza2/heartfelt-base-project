@@ -21,8 +21,6 @@ import { prefetchRoute } from "@/hooks/usePrefetchRoute";
 import { useUserLang } from "@/lib/authI18n";
 import { cn } from "@/lib/utils";
 
-const EMERALD = "#50C878";
-
 type Tier = "free" | "pro" | "max";
 
 interface TierMeta {
