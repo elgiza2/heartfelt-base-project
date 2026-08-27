@@ -2,41 +2,12 @@
 <html lang="en" dir="ltr" class="dark" translate="no">
   <head>
     <meta charset="UTF-8" />
-    <!-- No loader / no pulsing splash. Page paints instantly on a plain
-         background. When a valid PageSnapshot exists for the current path,
-         it's injected inline below (see the pre-hydration script at the
-         bottom of <body>) so returning visitors see the previous UI
-         immediately — no spinner, no flash. -->
+    <!-- No loader / no splash. Page paints instantly on a plain background. -->
     <style>
       :root { color-scheme: dark; }
       html, body { background-color: #1c1c1c; margin: 0; }
       #root { min-height: 100dvh; background-color: #1c1c1c; }
       #root[data-snapshot-preview="true"] { pointer-events: none; user-select: none; contain: paint; }
-      #instant-shell {
-        position: fixed;
-        inset: 0;
-        z-index: 0;
-        min-height: 100dvh;
-        display: none;
-        padding: 72px 24px 120px;
-        box-sizing: border-box;
-        background:
-          linear-gradient(180deg, rgba(10,10,10,.16), rgba(10,10,10,.84)),
-          url("https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260704_143500_a76b8e64-2c69-4683-80e7-2bb060a921d6.png&w=768&q=70") center/cover,
-          #0a0a0a;
-        color: #fff;
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        transition: opacity 180ms ease;
-      }
-      #instant-shell[data-active="true"] { display: flex; flex-direction: column; justify-content: center; }
-      #instant-shell[data-hidden="true"] { opacity: 0; pointer-events: none; }
-      #instant-shell .instant-shell__inner { width: min(420px, 100%); }
-      #instant-shell .instant-shell__badge { display: inline-flex; align-items: center; margin-bottom: 32px; padding: 10px 12px; border: 1px solid rgba(255,255,255,.2); border-radius: 999px; background: rgba(255,255,255,.08); color: rgba(255,255,255,.88); font-size: 12px; }
-      #instant-shell h1 { margin: 0; max-width: 340px; font-size: 34px; line-height: 1.08; font-weight: 500; letter-spacing: 0; }
-      #instant-shell .instant-shell__marquee { margin: 30px -24px 0; display: flex; gap: 10px; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent); mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent); }
-      #instant-shell .instant-shell__chip { flex: 0 0 auto; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; padding: 10px 15px; background: rgba(255,255,255,.08); color: rgba(255,255,255,.88); font-size: 14px; }
-      #instant-shell .instant-shell__cta { position: absolute; left: 24px; right: 24px; bottom: calc(24px + env(safe-area-inset-bottom)); height: 56px; display: grid; place-items: center; border-radius: 999px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.18); color: #fff; font-size: 16px; font-weight: 600; }
-      @media (min-width: 769px) { #instant-shell { display: none !important; } }
     </style>
     <meta name="google" content="notranslate" />
 
