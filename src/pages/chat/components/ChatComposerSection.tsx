@@ -6,7 +6,7 @@ import { MentionDropdown } from "./MentionDropdown";
 import { ComposerMobileModeBar } from "./ComposerMobileModeBar";
 import { ComposerAnimatedInput } from "./ComposerAnimatedInput";
 import ComposerServicePanel from "./ComposerServicePanel";
-import StarterCards from "./StarterCards";
+import StarterCards, { StarterChips } from "./StarterCards";
 
 import type { AttachedFile } from "../hooks/useAttachments";
 
