@@ -27,6 +27,8 @@ import "./styles/chat-legibility.css";
 // Must remain last: prevents legacy/page-level mobile styles from restoring
 // old button colours after the global sunset theme has loaded.
 import "./styles/mobile-sunset-buttons.css";
+// Light (white + pink) theme layer — must load after every legacy dark sheet.
+import "./styles/light-theme.css";
 // All fonts are loaded via Google Fonts <link> in index.html (Space Grotesk,
 // DM Sans, Work Sans, Inter, Instrument Serif, Noto Serif Arabic, Cairo,
 // Tajawal, Readex Pro). @fontsource imports were duplicating those payloads
