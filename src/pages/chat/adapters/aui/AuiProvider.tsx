@@ -54,7 +54,6 @@ export function AuiProvider({
       <RegisteredToolUIs />
       <RegisteredGenerativeUIs />
       {children}
-      <SelectionToolbar />
     </AssistantRuntimeProvider>
   );
 }
