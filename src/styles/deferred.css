@@ -2129,31 +2129,49 @@ svg {
   box-shadow: none !important;
 }
 
-/* Mobile composer send must stay white with a black arrow, regardless of the
-   global composer submit styling or theme remapping. */
+/* Composer send button: always high contrast against the composer surface.
+   Dark theme → white pill with a black arrow. Light theme → black pill with a
+   white arrow (a white pill would be invisible on the white composer). */
 .chat-composer-frame button[data-testid="mobile-composer-send"],
 button[data-testid="mobile-composer-send"] {
   background: #ffffff !important;
-  background-color: var(--ink-1) !important;
-  color: var(--sf-1) !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
   border: 0 !important;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
-  -webkit-text-fill-color: var(--sf-1) !important;
+  -webkit-text-fill-color: #000000 !important;
 }
 
 .chat-composer-frame button[data-testid="mobile-composer-send"] svg,
 button[data-testid="mobile-composer-send"] svg {
-  color: var(--sf-1) !important;
-  stroke: var(--sf-1) !important;
+  color: #000000 !important;
+  stroke: #000000 !important;
 }
 
 .chat-composer-frame button[data-testid="mobile-composer-send"]:disabled,
 button[data-testid="mobile-composer-send"]:disabled {
   background: #ffffff !important;
-  background-color: var(--ink-1) !important;
-  color: var(--sf-1) !important;
+  background-color: #ffffff !important;
   opacity: 0.42 !important;
 }
+
+html:not(.dark) .chat-composer-frame button[data-testid="mobile-composer-send"],
+html:not(.dark) button[data-testid="mobile-composer-send"],
+html:not(.dark) .chat-composer-frame button[data-testid="mobile-composer-send"]:disabled,
+html:not(.dark) button[data-testid="mobile-composer-send"]:disabled {
+  background: #17171a !important;
+  background-color: #17171a !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16) !important;
+}
+
+html:not(.dark) .chat-composer-frame button[data-testid="mobile-composer-send"] svg,
+html:not(.dark) button[data-testid="mobile-composer-send"] svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
 
 /* Plus / attach circular buttons */
 .chat-composer-frame button[aria-label*="Open attachments" i],
