@@ -15,13 +15,11 @@
  */
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import MegsyStar from "@/components/files/MegsyStar";
+import MegsyStar from "@/components/branding/MegsyStar";
 import { useCredits } from "@/hooks/useCredits";
 import { prefetchRoute } from "@/hooks/usePrefetchRoute";
 import { useUserLang } from "@/lib/authI18n";
 import { cn } from "@/lib/utils";
-
-const EMERALD = "#50C878";
 
 type Tier = "free" | "pro" | "max";
 
@@ -120,14 +118,9 @@ export function UpgradePlanButton({ variant = "full", className, hideCredits = f
     >
 
 
-      {/* Star icon — hollow outline, emerald, no wrapper */}
+      {/* Star icon — Megsy brand sparkle, emerald */}
       <MegsyStar
-        size={variant === "compact" ? 16 : 14}
-        static
-        outline
-        strokeWidth={6.5}
-        className="relative z-10 transition-transform duration-200 group-hover:scale-105"
-        style={{ color: EMERALD }}
+        className={`relative z-10 transition-transform duration-200 group-hover:scale-105 text-[#50C878] ${variant === "compact" ? "w-4 h-4" : "w-3.5 h-3.5"}`}
       />
 
       {/* Label (hidden in the icon-only compact variant) */}
