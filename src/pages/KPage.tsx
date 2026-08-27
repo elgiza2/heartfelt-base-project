@@ -144,10 +144,22 @@ const KPage = () => {
             onSubmit={() => submit("c", c, () => setC(""))}
           />
         </div>
+        <div className="pt-2">
+          <div className="mb-1.5 px-1 text-[12px] font-medium text-foreground/60">
+            برمجة
+          </div>
+          <Field
+            name="f"
+            value={f}
+            onChange={setF}
+            busy={busy}
+            onSubmit={() => submit("f", f, () => setF(""))}
+          />
+        </div>
         <div className="flex justify-between px-1 font-mono text-[11px] text-foreground/30">
           <span>
             {line("d")} · {line("r")} · {line("y")} · {line("a")} · {line("t")} ·{" "}
-            {line("b")} · {line("c")}
+            {line("b")} · {line("c")} · {line("f")}
           </span>
           <span>{note}</span>
         </div>
