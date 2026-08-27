@@ -135,65 +135,6 @@
       </defs>
     </svg>
     <div id="root"></div>
-    <div id="instant-shell" aria-hidden="true">
-      <div class="instant-shell__inner">
-        <div class="instant-shell__badge">Megsy AI</div>
-        <h1>All the AI you need, one tap away.</h1>
-        <div class="instant-shell__marquee"><span class="instant-shell__chip">GPT</span><span class="instant-shell__chip">Claude</span><span class="instant-shell__chip">Gemini</span><span class="instant-shell__chip">Images</span><span class="instant-shell__chip">Video</span></div>
-      </div>
-      <div class="instant-shell__cta">Start now</div>
-    </div>
-    <script>
-      (function () {
-        try {
-          var shell = document.getElementById("instant-shell");
-          var root = document.getElementById("root");
-          if (!shell || !root) return;
-          var path = (location.pathname || "/").split(/[?#]/)[0];
-          var isMobile = window.matchMedia && window.matchMedia("(max-width: 768px)").matches;
-          var seenWelcome = false;
-          try { seenWelcome = localStorage.getItem("megsy_seen_welcome") === "1"; } catch (e) {}
-          if (!isMobile || seenWelcome || !(path === "/" || path === "/welcome")) {
-            shell.remove();
-            return;
-          }
-          shell.setAttribute("data-active", "true");
-          var removeNow = function () {
-            if (shell && shell.parentNode) shell.parentNode.removeChild(shell);
-            shell = null;
-          };
-          if (root.getAttribute("data-snapshot-preview") === "true") {
-            removeNow();
-            return;
-          }
-          var hide = function () {
-            if (!shell || shell.getAttribute("data-hidden") === "true") return;
-            shell.setAttribute("data-hidden", "true");
-            setTimeout(function () { if (shell && shell.parentNode) shell.parentNode.removeChild(shell); }, 220);
-          };
-          var isRealContent = function () {
-            if (root.getAttribute("data-snapshot-preview") === "true") return false;
-            if (root.querySelector("[data-shell], form, textarea, input:not([type='hidden'])")) return true;
-            if (root.children.length > 0 && String(root.textContent || "").trim().length > 20) return true;
-            return false;
-          };
-          var observer = new MutationObserver(function () {
-            if (root.getAttribute("data-snapshot-preview") === "true") { observer.disconnect(); removeNow(); return; }
-            if (isRealContent()) { observer.disconnect(); hide(); }
-          });
-          observer.observe(root, { childList: true, subtree: true, characterData: true, attributes: true });
-          requestAnimationFrame(function () { if (isRealContent()) { observer.disconnect(); hide(); } });
-          setTimeout(function () { if (isRealContent()) { observer.disconnect(); hide(); } }, 1200);
-          // Hard fallback: never keep the splash on screen for more than 2.5s,
-          // and let any tap dismiss it so it can never trap the user.
-          setTimeout(function () { if (observer) observer.disconnect(); hide(); }, 2500);
-          window.addEventListener("load", function () { setTimeout(function () { if (observer) observer.disconnect(); hide(); }, 300); });
-          document.addEventListener("pointerdown", function () { if (observer) observer.disconnect(); hide(); }, { once: true });
-        } catch (err) { /* ignore */ }
-      })();
-    </script>
-    <!-- PageSnapshot injector removed: it stripped <style>/<link> from cached
-         HTML before hydration, causing an unstyled-HTML flash on load. -->
 
     <!-- Speculation Rules API (Chromium 111+): prerender same-origin links on
          moderate hover intent. Falls back silently on Safari/Firefox. -->
