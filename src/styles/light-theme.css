@@ -182,7 +182,7 @@ html.light .chat-composer-frame.chat-composer-liquid,
 html.light body .chat-composer-frame {
   border-width: 1px !important;
   border-style: solid !important;
-  border-color: var(--hairline) !important;
+  border-color: rgba(23, 23, 26, 0.16) !important;
   background-color: #ffffff !important;
   box-shadow: 0 8px 28px -14px rgba(23, 23, 26, 0.22) !important;
 }
