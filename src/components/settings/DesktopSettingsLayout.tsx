@@ -107,19 +107,7 @@ export function DesktopSettingsLayout({
   };
 
   const isSettingsHome = location.pathname === "/settings";
-  const isDark = useIsDark();
 
-  useEffect(() => {
-    if (!isSettingsHome) return;
-    const video = settingsVideoRef.current;
-    if (!video) return;
-    video.play().catch(() => {});
-    const handleVisibility = () => {
-      if (!document.hidden) video.play().catch(() => {});
-    };
-    document.addEventListener("visibilitychange", handleVisibility);
-    return () => document.removeEventListener("visibilitychange", handleVisibility);
-  }, [isSettingsHome]);
 
   // When mounted inside the persistent SettingsShell, portal just the inner
   // content (header + body) into the shell's main area so the sidebar/chrome
