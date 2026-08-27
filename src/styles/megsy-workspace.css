@@ -4,11 +4,11 @@
  * ========================================================================== */
 
 :root {
-  --mb-bg: #121212;
+  --mb-bg: var(--surface-1);
   --mb-chrome: #1c1c1b;
   --mb-panel: #1f201d;
   --mb-panel-2: #232420;
-  --mb-surface: #121212;
+  --mb-surface: var(--surface-1);
   --mb-border: rgba(255, 255, 255, 0.075);
   --mb-border-strong: var(--overlay-white-14);
   --mb-ink: #f7f7f5;
@@ -61,7 +61,7 @@
 .mb-pill-group {
   display: inline-flex;
   align-items: center;
-  background: #121212;
+  background: var(--surface-1);
   border: 1px solid var(--overlay-white-12);
   padding: 3px;
   border-radius: 10px;
@@ -117,7 +117,7 @@
   padding: 0 4px;
   font-size: 9px;
   font-weight: 700;
-  color: #fff;
+  color: var(--ink-1);
   background: #ef4444;
   border-radius: 7px;
   display: inline-flex;
@@ -132,7 +132,7 @@
   align-items: center;
   gap: 6px;
   background: var(--mb-violet);
-  color: #fff;
+  color: var(--ink-1);
   font-size: 13px;
   font-weight: 600;
   padding: 7px 16px;
@@ -168,13 +168,13 @@
 }
 .mb-divider {
   width: 1px;
-  background: #232323;
+  background: var(--surface-2);
   flex-shrink: 0;
 }
 .mb-divider--resize {
   width: 6px;
   background: transparent;
-  border-left: 1px solid #232323;
+  border-left: 1px solid var(--surface-2);
   cursor: col-resize;
   position: relative;
   transition:
@@ -284,7 +284,7 @@
 }
 .mb-msg-author--user::before {
   content: "U";
-  background: #232323;
+  background: var(--surface-2);
   border-color: transparent;
   color: var(--mb-ink-soft);
 }
@@ -295,7 +295,7 @@
   word-break: break-word;
 }
 .mb-msg-body--user {
-  background: #232323;
+  background: var(--surface-2);
   border: 1px solid rgba(255, 255, 255, 0.035);
   border-radius: 18px;
   padding: 12px 14px;
@@ -335,7 +335,7 @@
 }
 .mb-composer-shell {
   position: relative;
-  background: #232323;
+  background: var(--surface-2);
   border: 1px solid var(--overlay-white-12);
   border-radius: 22px;
   padding: 10px 12px;
@@ -390,7 +390,7 @@
 .mb-composer-tool:hover {
   background: rgba(255, 255, 255, 0.09);
   border-color: var(--overlay-white-18);
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--ink-2);
 }
 .mb-composer-tool:active {
   transform: scale(0.92);
@@ -482,7 +482,7 @@
 .mb-stage-frame {
   flex: 1;
   min-height: 0;
-  background: #121212;
+  background: var(--surface-1);
   border-radius: 12px 12px 12px 0;
   overflow: hidden;
   border: 1px solid var(--overlay-white-12);
@@ -496,7 +496,7 @@
   height: 100%;
   border: 0;
   display: block;
-  background: #121212;
+  background: var(--surface-1);
 }
 
 /* Device toggle ---------------------------------------------------------- */
@@ -530,7 +530,7 @@
 }
 .mb-device-btn[data-active="true"] {
   background: var(--overlay-white-10);
-  color: #fff;
+  color: var(--ink-1);
 }
 
 /* Eyebrow / mono helpers ------------------------------------------------- */
@@ -564,7 +564,7 @@
 }
 .mb-error-fix {
   background: #ef4444;
-  color: #fff;
+  color: var(--ink-1);
   font-size: 11px;
   font-weight: 600;
   padding: 6px 12px;
@@ -638,7 +638,7 @@
 }
 .mb-code-item[data-active="true"] {
   background: rgba(139, 92, 246, 0.12);
-  color: #fff;
+  color: var(--ink-1);
 }
 
 /* Console ---------------------------------------------------------------- */
@@ -684,7 +684,7 @@
   gap: 8px;
   height: 32px;
   padding: 0 10px 0 12px;
-  background: #232323;
+  background: var(--surface-2);
   border: 1px solid var(--overlay-white-06);
   border-radius: 999px;
   font-size: 12px;
@@ -862,7 +862,7 @@
   height: 30px;
   border-radius: 999px;
   background: #2563eb;
-  color: #fff;
+  color: var(--ink-1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -877,7 +877,7 @@
 .mb-navrail {
   width: 60px;
   flex-shrink: 0;
-  background: #121212;
+  background: var(--surface-1);
   border-right: 1px solid var(--overlay-white-08);
   display: flex;
   flex-direction: column;
