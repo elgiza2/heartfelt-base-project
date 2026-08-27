@@ -67,12 +67,15 @@ export default function ManusKeysPage() {
   const [newKey, setNewKey] = useState("");
   const [newLabel, setNewLabel] = useState("");
   const [adding, setAdding] = useState(false);
+  const [provider, setProvider] = useState<Provider>("manus");
+  const endpoint = PROVIDERS[provider].endpoint;
+  activeEndpoint = endpoint;
 
   const refresh = useCallback(
-    async (pw: string) => {
+    async (pw: string, ep: string = endpoint) => {
       setLoading(true);
       try {
-        const data = await callAdmin<{ keys: ManusKeyRow[] }>(pw, { action: "list" });
+        const data = await callAdmin<{ keys: ManusKeyRow[] }>(pw, { action: "list" }, ep);
         setKeys(data.keys ?? []);
       } catch (err) {
         toast.error(err instanceof Error ? err.message : "تعذّر تحميل المفاتيح");
@@ -80,7 +83,7 @@ export default function ManusKeysPage() {
         setLoading(false);
       }
     },
-    [],
+    [endpoint],
   );
 
   useEffect(() => {
