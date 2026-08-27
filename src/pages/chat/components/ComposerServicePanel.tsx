@@ -91,13 +91,14 @@ export default function ComposerServicePanel({
   onOpenTemplatePicker,
   onClear,
   isDocsAgent,
+  isDevAgent,
 }: Props) {
   const [pickerOpen, setPickerOpen] = useState(false);
 
   const isImages = chatMode === "images";
   const isVideo = chatMode === "video";
   const isSlides = chatMode === "slides" || chatMode === "slides-images";
-  const key = isDocsAgent ? "docs" : chatMode;
+  const key = isDocsAgent ? "docs" : isDevAgent ? "dev" : chatMode;
   const meta = SERVICE_META[key];
   if (!meta) return null;
   const hasSelector = isImages || isVideo || isSlides;
