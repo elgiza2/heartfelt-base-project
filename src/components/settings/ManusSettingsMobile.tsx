@@ -104,6 +104,7 @@ const ManusSettingsMobile = () => {
   const linkRows: Row[] = [
     { icon: Heart, label: "Rate this app", external: true, onClick: () => window.open("https://www.trustpilot.com/review/megsyai.com", "_blank", "noopener") },
     { icon: HelpCircle, label: "Get help", external: true, onClick: () => window.open("https://help.megsyai.com", "_blank", "noopener") },
+    { icon: Info, label: "About us", external: true, onClick: () => window.open("https://about.megsyai.com", "_blank", "noopener") },
     { icon: Asterisk, label: "Version", trailing: APP_VERSION, chevron: "none" },
   ];
 
