@@ -1,76 +1,80 @@
-# وكيل برمجة كامل (Terminal + أدوات + نشر) — خطة مبدئية واختيار الـ APIs
+# وكيل برمجة جديد (Dev Agent) — معزول تمامًا
 
-الهدف: تحويل الوكيل الحالي (`long-run` + E2B Desktop) إلى وكيل برمجة حقيقي يقدر يبني مشاريع React 18 / Full-stack كاملة، يشغّل terminal داخل sandbox، يكتب قاعدة بيانات على حساب Supabase الخاص بالمستخدم، يستورد من GitHub، وينشر المشروع على استضافة.
+## المبدأ
+لا نلمس أي كود موجود. كل شيء جديد تحت مجلدات جديدة فقط:
+- `src/lib/devagent/*` (المنطق)
+- `api/dev-agent.ts` (نقطة دخول واحدة جديدة)
+- `src/pages/devagent/*` (واجهة + تريمينال)
+- جداول جديدة بادئة `dev_*` في Supabase
 
-## الموجود حاليًا في المشروع
-- `api/long-run.ts` + `src/lib/longrun/agentLoop.ts` — حلقة وكيل تعمل على شرائح (45 ثانية / 4 خطوات) مع استئناف من الأحداث، وقادرة على تشغيل 20+ ساعة.
-- `@e2b/desktop` متصل بالفعل (bash + GUI + screenshots).
-- `api/computer-agent.ts`, `api/mcp.ts`, `src/lib/computer/*` — بنية جاهزة للأدوات و MCP.
-- Supabase متصل (جداول `long_runs` و `long_run_events`).
+الوكيل الأساسي (الشات) **لا يتغير كوده**. الاستدعاء يتم لاحقًا بسطر واحد اختياري: أداة `dev_agent` تُضاف لقائمة الأدوات، أو ببساطة رابط `@dev` يفتح الصفحة الجديدة. قرار الربط مؤجل لآخر مرحلة.
 
-يعني الأساس موجود؛ الناقص هو: طبقة أدوات برمجية منظمة (بدل JSON action واحد)، terminal في الواجهة، وطبقات GitHub / Supabase / Deploy.
-
----
-
-## 1) الـ Sandbox (تشغيل الكود والـ terminal)
-
-| الخيار | الرصيد المجاني | مناسب لـ | ملاحظات |
-|---|---|---|---|
-| **E2B** (مستخدم حاليًا) | ~$100 رصيد مبدئي للحسابات الجديدة، Hobby مجاني | تشغيل سريع لكل خطوة، bash + desktop | متصل بالفعل، أقل مجهود |
-| **Daytona** | رصيد مجاني عند التسجيل | Workspaces طويلة العمر (مشاريع ضخمة تستمر أيام) | أفضل لاستمرارية حالة المشروع |
-| **Modal** | ~$30 شهريًا مجانًا متجدد | مهام batch + GPU | الأفضل من ناحية استمرار الرصيد المجاني |
-| **Cloudflare / Vercel Sandbox** | ضمن خطط المنصة | تكامل مع النشر | أضعف في الـ terminal الطويل |
-
-اقتراحي: **E2B للأساس** (موجود) + **Daytona اختياريًا** للمشاريع طويلة الأمد.
-
-## 2) استضافة/نشر المشاريع الناتجة
-
-| الخيار | المجاني | API للنشر البرمجي |
-|---|---|---|
-| **Cloudflare Workers/Pages** | سخي جدًا ومجاني عمليًا (100k طلب/يوم) + D1 + R2 | Cloudflare API + Wrangler داخل الـ sandbox |
-| **Netlify** | 100GB/شهر | Netlify Deploy API (رفع ملفات مباشرة) — أسهل واحد |
-| **Vercel** | Hobby مجاني | Vercel REST Deployments API |
-| **Fly.io / Railway** | رصيد محدود | مناسب للـ backend/Docker |
-
-اقتراحي: **Netlify API كافتراضي** (نشر بسطر واحد بدون Docker) + **Cloudflare** كخيار للمشاريع اللي فيها backend/DB.
-
-## 3) قواعد البيانات (ربط حساب Supabase للمستخدم)
-- **Supabase Management API** + OAuth: المستخدم يربط حسابه → الوكيل يقدر يعمل مشروع، يشغّل SQL migrations، ويجيب الـ anon key ويحقنها في المشروع.
-- بديل أخف: المستخدم يلصق Project Ref + Service Role، ونخزّنه مشفّر.
-
-## 4) GitHub
-- **GitHub OAuth / App** → استيراد ريبو (clone داخل الـ sandbox)، إنشاء ريبو جديد، commit & push للنتيجة، وفتح PR.
-
-## 5) نموذج الذكاء الاصطناعي
-- Lovable AI Gateway (موجود) مع موديل قوي للبرمجة: `openai/gpt-5.6-terra` أو `google/gemini-3.7-flash` للخطوات السريعة، وموديل أقوى للتخطيط.
-- استخدام **tool calling** حقيقي بدل JSON نصي.
+كلامك صح: `manus` مربوط لكنه طبقة خارجية مغلقة لا نبني عليها — الوكيل الجديد مستقل عنها تمامًا.
 
 ---
 
-## ما سنبنيه (بعد اختيارك)
+## الـ APIs الجاهزة المقترحة (الاختيار مطلوب)
 
-### أ) طبقة أدوات الوكيل (Agent Tools)
-أدوات مُعرّفة بـ schema بدل الأكشن الواحد الحالي:
-`run_bash`, `write_file`, `read_file`, `list_dir`, `apply_patch`, `search_code`, `npm_install`, `start_dev_server`, `read_logs`, `screenshot_preview`, `git_clone/commit/push`, `supabase_sql`, `deploy`.
+### 1) بيئة التشغيل + الملفات + المعاينة — الحجر الأساس
 
-### ب) Terminal داخل الواجهة
-- لوحة terminal حية بجانب الشات تعرض stdout/stderr لكل أمر من الـ sandbox، مع إمكانية كتابة أوامر يدوية من المستخدم في نفس الـ sandbox.
-- Streaming عبر أحداث `long_run_events` (Realtime) — نفس البنية الحالية.
+**الخيار A — Freestyle.sh (الموصى به بقوة)**
+لأنه يوفر الثلاثة معًا في API واحد بدل ما نبنيهم:
+- **Git Filesystem API**: كل مشروع = ريبو Git حقيقي مستضاف عندهم. الوكيل يكتب ملفات، وإحنا نحصل على commits/branches/diff/rollback **مجانًا** بدل ما نخترع نظام checkpoints.
+- **Dev Server API**: يشغّل `npm install` + Vite dev server ويرجّع **رابط معاينة حي مع HMR** — دي بالظبط الحاجة الناقصة لمشاريع React 18/19 العملاقة (بدل Babel-CDN الحالي).
+- **VMs API**: `vm.exec()` = التريمينال الحقيقي مع stdout/stderr.
+- **Deploy API**: نشر مباشر لدومين `*.style.dev` أو دومين مخصص.
+- المجاني: **10 VMs متزامنة + 500 ريبو، $0 للأبد**.
 
-### ج) خط إنتاج المشاريع الضخمة
-- **Planner** يقسّم المهمة لملفات/مراحل → **Coder** ينفّذ ملف ملف → **Verifier** يشغّل build/lint ويصلح الأخطاء تلقائيًا (auto-fix loop) → **Deployer**.
-- قوالب جاهزة: React 18 + Vite + TS + Tailwind، وFull-stack (React + Supabase)، وNext.js.
-- شجرة ملفات ومعاينة حية (preview URL من الـ sandbox).
+**الخيار B — E2B (مثبت أصلًا في المشروع)**
+sandbox + terminal ممتازين، لكن **مفيش Git ولا dev-server ولا نشر** — نبنيهم بأنفسنا. رصيد مجاني $100 مبدئي فقط.
 
-### د) الربط والنشر
-- شاشة Integrations: ربط GitHub / Supabase / Netlify-Cloudflare بالـ OAuth، وتخزين التوكنات في جدول مشفّر مع RLS.
+**الخيار C — Daytona / Vercel Sandbox / Cloudflare Sandbox**
+Daytona أسرع cold start وأنسب للجلسات الطويلة، لكن نفس نقص Git/Deploy مثل E2B.
+
+> رأيي: **Freestyle للمشاريع (كود + معاينة + نشر)**، ونخلي E2B للمهام العامة الموجودة أصلًا.
+
+### 2) عقل الوكيل (Agent Loop)
+- **Vercel AI SDK** (`ai` + `@ai-sdk/openai-compatible`) بدل الحلقة اليدوية: يدي لنا tool-calling، multi-step، streaming، والغاء — جاهزين.
+- الموديل عبر **Lovable AI Gateway** (`openai/gpt-5.6-sol` للتخطيط + `gpt-5.6-terra` للتنفيذ)، أو نكمل على `chat-alibaba` الموجود.
+
+### 3) GitHub (استيراد + push + PR)
+- **GitHub REST API** مباشرة (`/repos`, `/git/trees`, `/pulls`) + OAuth App.
+- أو أسهل: نستنسخ الريبو داخل الـ VM بأمر `git clone` واحد ونرفعه بـ `git push` — بدون أي API إضافي.
+
+### 4) قاعدة البيانات (Supabase)
+- **Supabase Management API** (`/v1/projects`, `/v1/projects/{ref}/database/query`): إنشاء مشروع، تشغيل migrations، جلب المفاتيح وحقنها في `.env` داخل الـ VM تلقائيًا.
+- OAuth رسمي من Supabase عشان المستخدم يربط حسابه بضغطة.
+
+### 5) النشر
+- افتراضي: **Freestyle Deploy** (نفس المزود، صفر إعداد).
+- بديل/إضافي: **Netlify API** (أبسط API نشر) أو **Cloudflare Workers/Pages** (أسخى tier مجاني).
 
 ---
 
-## القرارات المطلوبة منك
-1. **Sandbox**: نكمل بـ E2B فقط؟ ولا نضيف Daytona/Modal للمهام الطويلة؟
-2. **النشر**: Netlify (أسهل) / Cloudflare (أسخى) / Vercel / كلهم؟
-3. **Supabase**: OAuth كامل (Management API) ولا إدخال يدوي للمفاتيح؟
-4. **GitHub**: استيراد فقط، ولا استيراد + push + PR؟
+## شكل النظام الجديد
 
-قولّي اختياراتك وأرجع بخطة تنفيذ كاملة بمراحل وملفات وجداول قاعدة بيانات.
+```text
+صفحة /dev-agent  ──►  api/dev-agent.ts  ──►  AI SDK loop
+     │  Terminal + شجرة ملفات + معاينة        │
+     │                                        ├─ tools: bash / read / write / patch
+     └──── SSE / Realtime ◄───────────────────┤          git_commit / npm_install
+                                              ├─ Freestyle: VM + Git + DevServer + Deploy
+                                              ├─ GitHub: import / push / PR
+                                              └─ Supabase Mgmt: create DB + migrations
+```
+
+### الأدوات التي سيملكها الوكيل
+`run_command` (تريمينال حقيقي) · `read_file` · `write_file` · `apply_patch` · `list_dir` · `search_code` · `npm_install` · `start_dev_server` · `read_logs` · `git_commit` / `git_branch` · `import_github_repo` · `create_supabase_db` · `run_migration` · `deploy` · `todo_write` (تخطيط مهام عملاقة) · `spawn_subagent` (تقسيم المهام الطويلة).
+
+### حلقة المهام العملاقة
+Planner → قائمة مهام مستمرة في `dev_tasks` → Coder ينفذ مهمة واحدة كل مرة → Verifier يشغّل `npm run build` ويقرأ الأخطاء ويصلحها تلقائيًا → commit بعد كل مهمة ناجحة. الجلسة قابلة للاستئناف لأن الحالة كلها في Git + قاعدة البيانات، مش في الذاكرة.
+
+---
+
+## المطلوب منك الآن
+1. بيئة التشغيل: **Freestyle** (موصى به) أم **E2B** أم **Daytona**؟
+2. النشر: Freestyle المدمج أم Netlify أم Cloudflare؟
+3. عقل الوكيل: **AI SDK + Lovable Gateway** أم نكمل على `chat-alibaba`؟
+4. GitHub: `git clone/push` داخل الـ VM (أبسط) أم GitHub API كامل بـ PRs؟
+
+بعد اختيارك أكتب الخطة التنفيذية الكاملة بالملفات والجداول ومراحل التنفيذ.
