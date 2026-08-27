@@ -2262,7 +2262,7 @@ button[data-tier-trigger] > [data-model-label] {
 
 
 /* Chat options menu — cinematic liquid-glass (spec: liquid-glass-strong). */
-.chat-options-glass-menu,
+html.dark .chat-options-glass-menu,
 [data-radix-popper-content-wrapper] .chat-options-glass-menu {
   background: rgba(255, 255, 255, 0.01) !important;
   background-blend-mode: luminosity;
@@ -2276,7 +2276,7 @@ button[data-tier-trigger] > [data-model-label] {
   isolation: isolate;
 }
 
-.mobile-more-glass-menu {
+html.dark .mobile-more-glass-menu {
   position: fixed !important;
   background: var(--overlay-white-03) !important;
   background-blend-mode: luminosity;
@@ -2293,14 +2293,14 @@ button[data-tier-trigger] > [data-model-label] {
   transform: translateZ(0);
 }
 
-.chat-options-glass-menu,
+html.dark .chat-options-glass-menu,
 [data-radix-popper-content-wrapper] .chat-options-glass-menu {
   position: relative;
 }
 
 /* Gradient hairline border via mask trick */
-.chat-options-glass-menu::before,
-.mobile-more-glass-menu::before {
+html.dark .chat-options-glass-menu::before,
+html.dark .mobile-more-glass-menu::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -2324,7 +2324,7 @@ button[data-tier-trigger] > [data-model-label] {
   z-index: 1;
 }
 
-.mobile-more-glass-menu::before {
+html.dark .mobile-more-glass-menu::before {
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.45) 0%,
@@ -2336,12 +2336,12 @@ button[data-tier-trigger] > [data-model-label] {
   );
 }
 
-.mobile-more-glass-menu::after {
+html.dark .mobile-more-glass-menu::after {
   content: none !important;
 }
 
-.chat-options-glass-menu > *,
-.mobile-more-glass-menu > * {
+html.dark .chat-options-glass-menu > *,
+html.dark .mobile-more-glass-menu > * {
   position: relative;
   z-index: 2;
 }
@@ -2352,20 +2352,20 @@ button[data-tier-trigger] > [data-model-label] {
 }
 
 /* Force readable text inside the dark glass menu regardless of theme */
-.chat-options-glass-menu,
-.mobile-more-glass-menu,
-.chat-options-glass-menu *,
-.mobile-more-glass-menu * {
+html.dark .chat-options-glass-menu,
+html.dark .mobile-more-glass-menu,
+html.dark .chat-options-glass-menu *,
+html.dark .mobile-more-glass-menu * {
   color: hsl(0 0% 98%) !important;
 }
-.chat-options-glass-menu .text-destructive,
-.mobile-more-glass-menu .text-destructive,
-.chat-options-glass-menu [class*="text-destructive"],
-.mobile-more-glass-menu [class*="text-destructive"] {
+html.dark .chat-options-glass-menu .text-destructive,
+html.dark .mobile-more-glass-menu .text-destructive,
+html.dark .chat-options-glass-menu [class*="text-destructive"],
+html.dark .mobile-more-glass-menu [class*="text-destructive"] {
   color: hsl(0 84% 65%) !important;
 }
-.chat-options-glass-menu svg,
-.mobile-more-glass-menu svg {
+html.dark .chat-options-glass-menu svg,
+html.dark .mobile-more-glass-menu svg {
   color: hsl(0 0% 92%) !important;
   opacity: 0.95;
 }
@@ -2417,20 +2417,20 @@ button[data-tier-trigger] > [data-model-label] {
 }
 
 /* Force all text on the chat surface to be light/white — no dark text allowed */
-.chat-surface-dark,
-.chat-surface-dark * {
+html.dark .chat-surface-dark,
+html.dark .chat-surface-dark * {
   color: hsl(0 0% 98%) !important;
 }
-.chat-surface-dark .text-destructive,
-.chat-surface-dark [class*="text-destructive"] {
+html.dark .chat-surface-dark .text-destructive,
+html.dark .chat-surface-dark [class*="text-destructive"] {
   color: hsl(0 84% 65%) !important;
 }
-.chat-surface-dark svg {
+html.dark .chat-surface-dark svg {
   color: hsl(0 0% 95%);
 }
 /* Preserve intentionally-colored buttons: keep text readable on filled backgrounds */
-.chat-surface-dark .bg-primary,
-.chat-surface-dark .bg-primary * {
+html.dark .chat-surface-dark .bg-primary,
+html.dark .chat-surface-dark .bg-primary * {
   color: hsl(var(--primary-foreground)) !important;
 }
 
