@@ -28,6 +28,8 @@ interface Props {
   onClear: () => void;
   /** Set when the docs agent is active — rendered with the same chip header. */
   isDocsAgent?: boolean;
+  /** Set when the dev agent is active — rendered with the same chip header. */
+  isDevAgent?: boolean;
 }
 
 /** Single source of truth for how every service chip looks/reads. */
@@ -40,6 +42,7 @@ const SERVICE_META: Record<
   slides: { title: "Create slides", Icon: Presentation },
   "slides-images": { title: "Create slides", Icon: Presentation },
   code: { title: "Code", Icon: Code2 },
+  dev: { title: "Dev", Icon: Code2 },
   "deep-research": { title: "Deep research", Icon: Microscope },
   learning: { title: "Learning", Icon: GraduationCap },
   docs: { title: "Documents", Icon: FileText },
