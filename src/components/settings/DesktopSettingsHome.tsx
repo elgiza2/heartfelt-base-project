@@ -165,15 +165,16 @@ export function DesktopSettingsHome() {
             <h2 className="mb-2.5 px-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-foreground/55">
               {group.title}
             </h2>
-            <div className="rounded-2xl border border-foreground/10 bg-white/[0.05] backdrop-blur-xl overflow-hidden shadow-[0_20px_60px_-30px_rgba(0,0,0,0.7)]">
+            <div className="rounded-2xl border border-border bg-card overflow-hidden shadow-sm">
               {group.rows.map((row) => {
                 const Icon = row.icon;
                 return (
                   <button
                     key={row.label}
                     onClick={() => (row.onClick ? row.onClick() : row.path && go(row.path))}
-                    className="ds-row w-full flex items-center gap-3 px-5 py-3.5 text-left hover:bg-white/[0.05] active:bg-white/[0.08] transition-colors"
+                    className="ds-row w-full flex items-center gap-3 px-5 py-3.5 text-left hover:bg-muted/60 active:bg-muted transition-colors"
                   >
+
                     <Icon className="w-[18px] h-[18px] text-foreground/75 shrink-0" />
                     <span className="flex-1 text-[14.5px] font-medium text-foreground">{row.label}</span>
                     {row.trailing && (
