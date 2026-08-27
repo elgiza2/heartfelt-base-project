@@ -3076,6 +3076,279 @@ export type Database = {
         }
         Relationships: []
       }
+      dev_deploys: {
+        Row: {
+          commit_sha: string | null
+          created_at: string
+          deployment_id: string | null
+          error: string | null
+          id: string
+          project_id: string
+          run_id: string | null
+          screenshot_url: string | null
+          status: string
+          updated_at: string
+          url: string | null
+          user_id: string
+        }
+        Insert: {
+          commit_sha?: string | null
+          created_at?: string
+          deployment_id?: string | null
+          error?: string | null
+          id?: string
+          project_id: string
+          run_id?: string | null
+          screenshot_url?: string | null
+          status?: string
+          updated_at?: string
+          url?: string | null
+          user_id: string
+        }
+        Update: {
+          commit_sha?: string | null
+          created_at?: string
+          deployment_id?: string | null
+          error?: string | null
+          id?: string
+          project_id?: string
+          run_id?: string | null
+          screenshot_url?: string | null
+          status?: string
+          updated_at?: string
+          url?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dev_deploys_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "dev_projects"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "dev_deploys_run_id_fkey"
+            columns: ["run_id"]
+            isOneToOne: false
+            referencedRelation: "dev_runs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      dev_events: {
+        Row: {
+          created_at: string
+          id: number
+          payload: Json
+          run_id: string
+          title: string | null
+          type: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          payload?: Json
+          run_id: string
+          title?: string | null
+          type: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          payload?: Json
+          run_id?: string
+          title?: string | null
+          type?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dev_events_run_id_fkey"
+            columns: ["run_id"]
+            isOneToOne: false
+            referencedRelation: "dev_runs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      dev_projects: {
+        Row: {
+          conversation_id: string | null
+          created_at: string
+          deploy_url: string | null
+          deployed_commit: string | null
+          git_url: string | null
+          github_repo: string | null
+          head_commit: string | null
+          id: string
+          metadata: Json
+          name: string
+          repo_id: string | null
+          screenshot_url: string | null
+          status: string
+          supabase_project_ref: string | null
+          template: string
+          updated_at: string
+          user_id: string
+          vm_id: string | null
+        }
+        Insert: {
+          conversation_id?: string | null
+          created_at?: string
+          deploy_url?: string | null
+          deployed_commit?: string | null
+          git_url?: string | null
+          github_repo?: string | null
+          head_commit?: string | null
+          id?: string
+          metadata?: Json
+          name?: string
+          repo_id?: string | null
+          screenshot_url?: string | null
+          status?: string
+          supabase_project_ref?: string | null
+          template?: string
+          updated_at?: string
+          user_id: string
+          vm_id?: string | null
+        }
+        Update: {
+          conversation_id?: string | null
+          created_at?: string
+          deploy_url?: string | null
+          deployed_commit?: string | null
+          git_url?: string | null
+          github_repo?: string | null
+          head_commit?: string | null
+          id?: string
+          metadata?: Json
+          name?: string
+          repo_id?: string | null
+          screenshot_url?: string | null
+          status?: string
+          supabase_project_ref?: string | null
+          template?: string
+          updated_at?: string
+          user_id?: string
+          vm_id?: string | null
+        }
+        Relationships: []
+      }
+      dev_runs: {
+        Row: {
+          allow_deploy: boolean
+          conversation_id: string | null
+          created_at: string
+          error: string | null
+          finished_at: string | null
+          id: string
+          intent: string
+          last_heartbeat_at: string | null
+          message_id: string | null
+          project_id: string | null
+          prompt: string
+          status: string
+          step: number
+          summary: string | null
+          updated_at: string
+          user_id: string
+          vm_id: string | null
+        }
+        Insert: {
+          allow_deploy?: boolean
+          conversation_id?: string | null
+          created_at?: string
+          error?: string | null
+          finished_at?: string | null
+          id?: string
+          intent?: string
+          last_heartbeat_at?: string | null
+          message_id?: string | null
+          project_id?: string | null
+          prompt?: string
+          status?: string
+          step?: number
+          summary?: string | null
+          updated_at?: string
+          user_id: string
+          vm_id?: string | null
+        }
+        Update: {
+          allow_deploy?: boolean
+          conversation_id?: string | null
+          created_at?: string
+          error?: string | null
+          finished_at?: string | null
+          id?: string
+          intent?: string
+          last_heartbeat_at?: string | null
+          message_id?: string | null
+          project_id?: string | null
+          prompt?: string
+          status?: string
+          step?: number
+          summary?: string | null
+          updated_at?: string
+          user_id?: string
+          vm_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dev_runs_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "dev_projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      dev_tasks: {
+        Row: {
+          created_at: string
+          id: string
+          position: number
+          result: string | null
+          run_id: string
+          status: string
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          position?: number
+          result?: string | null
+          run_id: string
+          status?: string
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          position?: number
+          result?: string | null
+          run_id?: string
+          status?: string
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "dev_tasks_run_id_fkey"
+            columns: ["run_id"]
+            isOneToOne: false
+            referencedRelation: "dev_runs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       document_premium_usage: {
         Row: {
           id: string
@@ -3465,6 +3738,54 @@ export type Database = {
           provider_pool?: string
           used_count?: number
           user_id?: string
+        }
+        Relationships: []
+      }
+      freestyle_keys: {
+        Row: {
+          api_key: string
+          cooldown_until: string | null
+          created_at: string
+          failure_count: number
+          id: string
+          label: string | null
+          last_error: string | null
+          last_used_at: string | null
+          notes: string | null
+          priority: number
+          status: string
+          success_count: number
+          updated_at: string
+        }
+        Insert: {
+          api_key: string
+          cooldown_until?: string | null
+          created_at?: string
+          failure_count?: number
+          id?: string
+          label?: string | null
+          last_error?: string | null
+          last_used_at?: string | null
+          notes?: string | null
+          priority?: number
+          status?: string
+          success_count?: number
+          updated_at?: string
+        }
+        Update: {
+          api_key?: string
+          cooldown_until?: string | null
+          created_at?: string
+          failure_count?: number
+          id?: string
+          label?: string | null
+          last_error?: string | null
+          last_used_at?: string | null
+          notes?: string | null
+          priority?: number
+          status?: string
+          success_count?: number
+          updated_at?: string
         }
         Relationships: []
       }
