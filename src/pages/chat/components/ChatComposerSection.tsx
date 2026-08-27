@@ -104,7 +104,7 @@ export function ChatComposerSection(props: ChatComposerSectionProps) {
         ["--sb-left" as any]: (sidebarOffset ?? (sidebarCollapsed ? 56 : 260)) + "px",
         transitionTimingFunction: "cubic-bezier(0.34, 1.35, 0.64, 1)",
       }}
-      className={`fixed start-0 md:start-[var(--sb-left)] end-0 bottom-[var(--kb-offset,0px)] z-30 px-2 md:px-6 pb-[calc(env(safe-area-inset-bottom)+0.5rem)] md:pb-[calc(env(safe-area-inset-bottom)+1.25rem)] pt-3 md:pt-6 pointer-events-none transition-[inset-inline-start,top,bottom,transform] duration-[520ms] bg-transparent will-change-transform ${
+      className={`chat-composer-dock fixed end-0 bottom-[var(--kb-offset,0px)] z-30 px-2 md:px-6 pb-[calc(env(safe-area-inset-bottom)+0.5rem)] md:pb-[calc(env(safe-area-inset-bottom)+1.25rem)] pt-3 md:pt-6 pointer-events-none transition-[inset-inline-start,top,bottom,transform] duration-[520ms] bg-transparent will-change-transform ${
         isDesktopLanding
           ? "md:top-0 md:bottom-0 md:flex md:items-center md:justify-center md:bg-transparent md:backdrop-blur-0 md:border-0 md:overflow-visible"
           : "md:bg-transparent md:backdrop-blur-0 md:border-0"
