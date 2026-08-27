@@ -8,7 +8,7 @@
 html.light,
 html.light body,
 html.light #root {
-  background-color: #ffffff !important;
+  background-color: #f3f3f5 !important;
   color: var(--ink-1);
   color-scheme: light;
 }
@@ -163,6 +163,17 @@ html.light .rounded-\[28px\] {
   border: 1px solid var(--hairline);
 }
 
+/* White cards on the grey canvas, with a clearly visible edge */
+html.light .bg-card:not(.theme-fixed),
+html.light .bg-background:not(.theme-fixed),
+html.light .bg-white:not(.theme-fixed),
+html.light [data-card],
+html.light .settings-card,
+html.light .card {
+  background-color: #ffffff !important;
+  border-color: var(--hairline) !important;
+}
+
 /* Composer card — white surface with a clear hairline edge on every breakpoint
    so the input box is visible against the white page. */
 html.light .composer-card,
@@ -170,7 +181,7 @@ html.light .chat-composer-frame,
 html.light [data-chat-composer],
 html.light .animated-input-shell {
   background-color: #ffffff !important;
-  border: 1px solid var(--hairline) !important;
+  border: 1px solid rgba(23, 23, 26, 0.22) !important;
   border-radius: 24px !important;
   box-shadow: 0 8px 28px -14px rgba(23, 23, 26, 0.22) !important;
 }
@@ -182,7 +193,7 @@ html.light .chat-composer-frame.chat-composer-liquid,
 html.light body .chat-composer-frame {
   border-width: 1px !important;
   border-style: solid !important;
-  border-color: rgba(23, 23, 26, 0.16) !important;
+  border-color: rgba(23, 23, 26, 0.22) !important;
   background-color: #ffffff !important;
   box-shadow: 0 8px 28px -14px rgba(23, 23, 26, 0.22) !important;
 }
