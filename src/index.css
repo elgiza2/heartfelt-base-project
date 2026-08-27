@@ -647,9 +647,9 @@ select {
 .liquid-glass-input input:not(:placeholder-shown),
 .ios26-glass-chip textarea:not(:placeholder-shown),
 .ios26-glass-chip input:not(:placeholder-shown) {
-  color: hsl(0 0% 100%) !important;
-  -webkit-text-fill-color: hsl(0 0% 100%) !important;
-  caret-color: hsl(0 0% 100%) !important;
+  color: var(--ink-1) !important;
+  -webkit-text-fill-color: var(--ink-1) !important;
+  caret-color: var(--ink-1) !important;
 }
 
 .chat-composer-frame {
