@@ -139,13 +139,7 @@ export function StarterCards({ onPick, className = "" }: StarterCardsProps) {
           <button
             key={c.id}
             type="button"
-            onClick={() => {
-              if (c.id === "integrations") {
-                window.dispatchEvent(new CustomEvent("megsy:open-integrations"));
-                return;
-              }
-              onPick("", (c as { mode?: string }).mode);
-            }}
+            onClick={() => handleCardClick(c, onPick)}
             className="snap-start shrink-0 w-[84%] max-w-[330px] flex items-center gap-3 rounded-[16px] border-0 bg-[color:var(--chat-claude-composer,#262627)] hover:brightness-110 active:scale-[0.99] transition-all px-3.5 py-2 text-start"
           >
             <img
