@@ -36,6 +36,7 @@ export function DesktopSettingsHome() {
   const go = (path: string) => navigate(path);
   const account = useActiveAccount();
   const avatarUrl = account.avatarUrl;
+  const [themeMode, setThemeMode] = useState<ThemeMode>(() => getStoredTheme());
   const [userEmail, setUserEmail] = useState("");
   const [plan, setPlan] = useState("free");
   const userName = account.name || userEmail.split("@")[0] || tx("User");
