@@ -1,6 +1,8 @@
 import { useEffect, useState, type FC, type SVGProps } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChevronRight, Sparkles, Globe, Brain, Info } from "lucide-react";
+import { getStoredTheme, setTheme, type ThemeMode } from "@/lib/theme";
+import { Moon as MoonIcon, Sun as SunIcon } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useConfirm } from "@/components/common/ConfirmDialog";
 import { useActiveAccount } from "@/hooks/useActiveAccount";
@@ -101,6 +103,16 @@ export function DesktopSettingsHome() {
         { icon: SupportIcon, label: tx("Help & Support"), path: "/settings/support" },
         { icon: PrivacyIcon, label: tx("Privacy & Data"), path: "/settings/privacy" },
         { icon: StatusIcon, label: tx("System status"), path: "/settings/system-status" },
+        {
+          icon: (p) => (themeMode === "dark" ? <MoonIcon {...p} /> : <SunIcon {...p} />),
+          label: tx("Appearance"),
+          trailing: themeMode === "dark" ? tx("Dark") : themeMode === "system" ? tx("System") : tx("Light"),
+          onClick: () => {
+            const next: ThemeMode = themeMode === "light" ? "dark" : themeMode === "dark" ? "system" : "light";
+            setThemeMode(next);
+            setTheme(next);
+          },
+        },
         { icon: (p) => <Info {...p} />, label: tx("About us"), onClick: () => window.open("https://about.megsyai.com", "_blank", "noopener") },
       ],
     },
