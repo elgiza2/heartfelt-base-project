@@ -34,42 +34,19 @@ export function SubShell({ title, subtitle, backTo = "/settings", onBack, action
         <div className="relative z-10 mx-auto max-w-3xl settings-page-enter">
           <button
             onClick={goBack}
-            className="mb-6 inline-flex items-center gap-1.5 text-[12.5px] text-foreground/60 hover:text-[#e6c56a] transition-colors group"
+            className="mb-6 inline-flex items-center gap-1.5 text-[12.5px] text-muted-foreground hover:text-foreground transition-colors group"
           >
             <ChevronLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" strokeWidth={2} />
             Settings
           </button>
-          <div
-            className="rounded-2xl overflow-hidden"
-            style={{
-              background: "rgba(255,255,255,0.025)",
-              border: "1px solid rgba(255,255,255,0.07)",
-              boxShadow: "0 30px 80px -30px rgba(0,0,0,0.7)",
-            }}
-          >
-            <header
-              className="flex items-start justify-between gap-6 px-6 pt-6 pb-5"
-              style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
-            >
+          <div className="rounded-2xl overflow-hidden border border-border bg-card/80 shadow-[0_30px_80px_-40px_hsl(var(--foreground)/0.35)] backdrop-blur-xl">
+            <header className="flex items-start justify-between gap-6 px-6 pt-6 pb-5 border-b border-border">
               <div className="min-w-0">
-                <h1
-                  className="text-[24px] leading-[1.1] font-semibold tracking-tight"
-                  style={{
-                    color: "#faf7ee",
-                    letterSpacing: "-0.025em",
-                    background: "linear-gradient(180deg, #faf7ee 0%, #d8d2c1 100%)",
-                    WebkitBackgroundClip: "text",
-                    backgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
-                >
+                <h1 className="text-[24px] leading-[1.1] font-semibold tracking-tight text-foreground [letter-spacing:-0.025em]">
                   {title}
                 </h1>
                 {subtitle && (
-                  <p
-                    className="mt-2 text-[12.5px] max-w-xl leading-relaxed"
-                    style={{ color: "rgba(245,242,234,0.55)" }}
-                  >
+                  <p className="mt-2 text-[12.5px] max-w-xl leading-relaxed text-muted-foreground">
                     {subtitle}
                   </p>
                 )}
@@ -77,6 +54,7 @@ export function SubShell({ title, subtitle, backTo = "/settings", onBack, action
               {action && <div className="shrink-0">{action}</div>}
             </header>
             <div className="px-8 py-6 space-y-2 text-foreground">{children}</div>
+
           </div>
         </div>
       </DesktopSettingsLayout>
