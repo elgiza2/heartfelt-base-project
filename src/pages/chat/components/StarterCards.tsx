@@ -5,7 +5,6 @@ import {
   Presentation,
   ScanSearch,
   FileText,
-  Plug,
 } from "lucide-react";
 
 export interface StarterCardsProps {
