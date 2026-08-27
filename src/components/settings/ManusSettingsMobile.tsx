@@ -198,7 +198,9 @@ const ManusSettingsMobile = () => {
           <section className="ms-card">{advancedRows.map(renderRow)}</section>
 
           <section className="ms-card">{accountRows.map(renderRow)}</section>
+          <section className="ms-card">{appearanceRows.map(renderRow)}</section>
           <section className="ms-card">{linkRows.map(renderRow)}</section>
+
 
           <section className="ms-card">
             <button type="button" className="ms-row" onClick={() => setLogoutOpen(true)}>
