@@ -569,8 +569,8 @@ html[data-theme="light"] [data-skin="claude"] [data-tier-trigger],
 html[data-theme="light"] [data-skin="claude"] [data-model-trigger],
 html[data-theme="light"] [data-skin="claude"] [data-tier-trigger] *,
 html[data-theme="light"] [data-skin="claude"] [data-model-trigger] * {
-  color: var(--sf-1) !important;
-  -webkit-text-fill-color: var(--sf-1) !important;
+  color: var(--ink-1) !important;
+  -webkit-text-fill-color: var(--ink-1) !important;
 }
 
 html[data-theme="dark"] [data-skin="claude"] [data-tier-trigger],

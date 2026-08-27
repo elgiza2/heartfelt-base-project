@@ -225,7 +225,7 @@ const knCss = `
 .kn-icon-btn:active { transform: scale(0.94); }
 
 .kn-main { padding: 6px 14px 28px; }
-.kn-state { display: grid; place-items: center; padding: 68px 0; color: rgba(232,232,232,0.5); }
+.kn-state { display: grid; place-items: center; padding: 68px 0; color: hsl(var(--foreground) / 0.6); }
 
 .kn-empty {
   display: grid; justify-items: center; gap: 12px;
@@ -233,7 +233,7 @@ const knCss = `
   animation: kn-rise 320ms cubic-bezier(0.16,1,0.3,1) both;
 }
 .kn-empty-icon { width: 38px; height: 38px; color: var(--mn-muted); }
-.kn-empty-text { margin: 0; font-size: 13.5px; color: rgba(232,232,232,0.5); }
+.kn-empty-text { margin: 0; font-size: 13.5px; color: hsl(var(--foreground) / 0.6); }
 .kn-cta {
   display: inline-flex; align-items: center; gap: 7px;
   padding: 10px 17px; border: 0; border-radius: 12px;
@@ -249,7 +249,7 @@ const knCss = `
   animation: kn-rise 320ms cubic-bezier(0.16,1,0.3,1) both;
 }
 .kn-card-name { margin: 0 0 5px; font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
-.kn-card-when { margin: 0 0 10px; font-size: 12.5px; line-height: 1.5; color: rgba(232,232,232,0.5); }
+.kn-card-when { margin: 0 0 10px; font-size: 12.5px; line-height: 1.5; color: hsl(var(--foreground) / 0.6); }
 .kn-card-foot {
   display: flex; align-items: center; justify-content: space-between;
   padding: 8px 0 6px; border-top: 1px solid var(--mn-sep);
@@ -261,7 +261,7 @@ const knCss = `
 }
 .kn-status.is-on { color: var(--mn-accent); }
 .kn-dot { width: 6px; height: 6px; border-radius: 999px; background: currentColor; }
-.kn-time { font-size: 12.5px; color: rgba(232,232,232,0.4); }
+.kn-time { font-size: 12.5px; color: hsl(var(--foreground) / 0.6); }
 
 .kn-sheet-wrap {
   position: fixed; inset: 0; z-index: 60;
@@ -301,7 +301,7 @@ const knCss = `
 .kn-fields { padding: 4px 16px 0; display: grid; gap: 6px; }
 .kn-label {
   margin-top: 12px; font-size: 13px; font-weight: 500;
-  color: rgba(232,232,232,0.85);
+  color: hsl(var(--foreground) / 0.85);
 }
 .kn-req { color: var(--mn-danger); }
 .kn-input {
@@ -315,7 +315,7 @@ const knCss = `
   outline: none !important; box-shadow: none !important;
   appearance: none; transition: background 160ms ease, box-shadow 160ms ease;
 }
-.kn-input::placeholder { color: rgba(232,232,232,0.34); font-size: 14.5px; }
+.kn-input::placeholder { color: hsl(var(--foreground) / 0.6); font-size: 14.5px; }
 .kn-input:focus {
   background: var(--mn-card-2) !important;
   box-shadow: inset 0 0 0 1px hsl(var(--foreground) / 0.1) !important;

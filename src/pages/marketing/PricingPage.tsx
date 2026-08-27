@@ -584,11 +584,11 @@ const PricingPage = () => {
         .liquid-glass:active { transform: scale(0.98); }
 
         .mobile-menu-glass {
-          background: rgba(10, 10, 10, 0.7);
+          background: hsl(var(--card) / 0.7);
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
           border: 1px solid var(--overlay-white-08);
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 var(--overlay-white-10);
+          box-shadow: 0 8px 32px hsl(var(--foreground) / 0.18), inset 0 1px 0 var(--overlay-white-10);
         }
 
         .pricing-card-glass {

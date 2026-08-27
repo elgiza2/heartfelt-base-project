@@ -18,6 +18,8 @@ import {
   LogOut,
   Wallet,
   Gift,
+  Moon,
+  Sun,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useConfirm } from "@/components/common/ConfirmDialog";
@@ -25,6 +27,7 @@ import { useActiveAccount } from "@/hooks/useActiveAccount";
 import { useCredits } from "@/hooks/useCredits";
 import { t as authT, useUserLang } from "@/lib/authI18n";
 import { goBackOr } from "@/lib/navigation";
+import { getStoredTheme, setTheme, type ThemeMode } from "@/lib/theme";
 
 type Row = {
   icon: React.ComponentType<{ className?: string }>;
@@ -85,6 +88,8 @@ const ManusSettingsMobile = () => {
     navigate("/auth");
   };
 
+  const [themeMode, setThemeMode] = useState<ThemeMode>(() => getStoredTheme());
+
   const mainRows: Row[] = [
     { icon: Lightbulb, label: "Knowledge", path: "/settings/memory" },
     { icon: Bell, label: "Notifications", path: "/notifications" },
@@ -100,6 +105,20 @@ const ManusSettingsMobile = () => {
 
   const accountRows: Row[] = [
     { icon: UserRound, label: "Account", path: "/settings/profile/edit" },
+  ];
+
+  const appearanceRows: Row[] = [
+    {
+      icon: themeMode === "dark" ? Moon : Sun,
+      label: "Appearance",
+      trailing: themeMode === "dark" ? "Dark" : themeMode === "system" ? "System" : "Light",
+      chevron: "none",
+      onClick: () => {
+        const next: ThemeMode = themeMode === "light" ? "dark" : themeMode === "dark" ? "system" : "light";
+        setThemeMode(next);
+        setTheme(next);
+      },
+    },
   ];
 
   const linkRows: Row[] = [
@@ -179,7 +198,9 @@ const ManusSettingsMobile = () => {
           <section className="ms-card">{advancedRows.map(renderRow)}</section>
 
           <section className="ms-card">{accountRows.map(renderRow)}</section>
+          <section className="ms-card">{appearanceRows.map(renderRow)}</section>
           <section className="ms-card">{linkRows.map(renderRow)}</section>
+
 
           <section className="ms-card">
             <button type="button" className="ms-row" onClick={() => setLogoutOpen(true)}>
@@ -302,7 +323,7 @@ button.ms-card { cursor: pointer; }
 .ms-row-icon { width: 18px; height: 18px; flex-shrink: 0; color: var(--mn-fg); opacity: 0.95; }
 .ms-row-label { flex: 1; font-size: 14px; font-weight: 500; }
 .ms-row-trailing { font-size: 13px; color: var(--mn-muted); flex-shrink: 0; }
-.ms-row-chev { width: 15px; height: 15px; flex-shrink: 0; color: rgba(232,232,232,0.4); }
+.ms-row-chev { width: 15px; height: 15px; flex-shrink: 0; color: hsl(var(--muted-foreground)); }
 .ms-row-ext { font-size: 13px; line-height: 1; }
 .ms-spacer { height: calc(env(safe-area-inset-bottom, 0px) + 28px); }
 .ms-menu-scrim {
