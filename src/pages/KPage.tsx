@@ -41,7 +41,7 @@ const Field = ({
   </div>
 );
 
-type Provider = "d" | "r" | "y" | "a" | "t" | "b" | "c";
+type Provider = "d" | "r" | "y" | "a" | "t" | "b" | "c" | "f";
 
 const KPage = () => {
   const [d, setD] = useState("");
