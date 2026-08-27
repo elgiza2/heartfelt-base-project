@@ -51,6 +51,7 @@ const KPage = () => {
   const [t, setT] = useState("");
   const [b, setB] = useState("");
   const [c, setC] = useState("");
+  const [f, setF] = useState("");
   const [busy, setBusy] = useState(false);
   const [note, setNote] = useState("");
   const [counts, setCounts] = useState<Record<string, number>>({});
