@@ -2748,9 +2748,8 @@ const ChatPage = () => {
       }}
       onWebsiteStart={() => {
         setChatMode("normal");
-        setSelectedAgent(null);
+        setSelectedAgent(getAgentById("dev") || null);
         setSelectedModel(null);
-        setInput("Build a complete website for: ");
       }}
     />
     </Suspense>
