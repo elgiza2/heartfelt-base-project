@@ -9,7 +9,7 @@ import {
   Plus,
 } from "lucide-react";
 import { m as motion, AnimatePresence } from "framer-motion";
-import MentionDropdown from "./MentionDropdown";
+
 import ModelPickerDropdown from "@/components/model-picker/ModelPickerDropdown";
 import type { AgentDef, AgentModel } from "@/lib/agentRegistry";
 import { getAgentById } from "@/lib/agentRegistry";
@@ -242,47 +242,15 @@ const AnimatedInput = ({
       }
     }
 
-    // Check for @ mention
-    const atMatch = textBeforeCursor.match(/@(\w*)$/);
-    if (atMatch) {
-      setMentionOpen(true);
-      setMentionQuery(atMatch[1]);
-      setModelPickerOpen(false);
-    } else {
-      setMentionOpen(false);
-      setMentionQuery("");
-      if (!textBeforeCursor.match(/#(\w*)$/)) {
-        setModelPickerOpen(false);
-        setModelQuery("");
-      }
-    }
-  };
-
-  const handleMentionSelect = (agent: AgentDef) => {
-    const cursorPos = textareaRef.current?.selectionStart || value.length;
-    const textBeforeCursor = value.slice(0, cursorPos);
-    const cleanedBefore = textBeforeCursor.replace(/@\w*$/, "");
-    const textAfter = value.slice(cursorPos);
-    // Keep @agent visible in input
-    const agentTag = `@${agent.label} `;
-    const newVal = cleanedBefore + agentTag + textAfter;
-    onChange(newVal);
+    // @ mention menu removed by design.
     setMentionOpen(false);
     setMentionQuery("");
-    setLastSelectedAgent(agent);
-    onAgentSelect?.(agent);
-
-    // Auto-open model picker if agent has models
-    if (agent.models && agent.models.length > 0) {
-      setTimeout(() => {
-        // Insert # and open model picker
-        const pos = (cleanedBefore + agentTag).length;
-        onChange(cleanedBefore + agentTag + "#" + textAfter);
-        setModelPickerOpen(true);
-        setModelQuery("");
-      }, 50);
+    if (!textBeforeCursor.match(/#(\w*)$/)) {
+      setModelPickerOpen(false);
+      setModelQuery("");
     }
   };
+
 
   const handleModelSelect = (model: AgentModel) => {
     // Replace #query with #model-label and keep it visible
@@ -313,15 +281,7 @@ const AnimatedInput = ({
   return (
     <div className="relative">
       <AnimatePresence>
-        {mentionOpen && (
-          <MentionDropdown
-            query={mentionQuery}
-            onSelect={handleMentionSelect}
-            onClose={() => setMentionOpen(false)}
-            visible={mentionOpen}
-            categories={mentionCategories}
-          />
-        )}
+        {/* @ mention dropdown removed by design. */}
         {modelPickerOpen && activeAgentModels.length > 0 && (
           <ModelPickerDropdown
             models={activeAgentModels}
