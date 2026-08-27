@@ -48,6 +48,9 @@ export function AuiProvider({
 
   return (
     <AssistantRuntimeProvider runtime={runtime}>
+      {attachedFiles !== undefined && (
+        <AttachmentsSync attachedFiles={attachedFiles} />
+      )}
       <RegisteredToolUIs />
       <RegisteredGenerativeUIs />
       {children}
