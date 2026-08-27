@@ -79,7 +79,7 @@ export function ChatComposerSection(props: ChatComposerSectionProps) {
   // persisted in localStorage, so auto-hiding causes chips to disappear every
   // time the user returns to the chat page.
   const [modesShown, setModesShown] = useState(true);
-  const [, setInputFocused] = useState(false);
+  const [inputFocused, setInputFocused] = useState(false);
   const d = desktopModeChipsProps as any;
   // Modes that already render their own labelled header panel. Showing the
   // ActiveServicePill for these too is what produced two chips at once.
@@ -95,6 +95,13 @@ export function ChatComposerSection(props: ChatComposerSectionProps) {
   // auto-return when the service pill is cleared or the user opens a fresh
   // conversation on desktop.
   const effectiveModesShown = modesShown && !hasActiveService;
+
+  // Starter chips: only on the empty landing state, and they disappear the
+  // moment the user clicks into the input, types anything, or activates a
+  // service. They come back when the service X button clears the mode.
+  const composerInputText = String((composerAnimatedInputProps as any)?.input ?? "");
+  const starterChipsVisible =
+    isEmpty && !hasActiveService && !inputFocused && composerInputText.trim().length === 0;
 
 
 
@@ -149,7 +156,7 @@ export function ChatComposerSection(props: ChatComposerSectionProps) {
 
             {/* Mode chips row removed by design: modes live in the + menu. */}
 
-            {isEmpty ? (
+            {starterChipsVisible ? (
               <StarterCards
                 className="mb-3"
                 onPick={(_prompt, mode) => {
@@ -209,7 +216,7 @@ export function ChatComposerSection(props: ChatComposerSectionProps) {
               </div>
 
               {/* Desktop-only starter chips below the composer (icons, no images). */}
-              {isEmpty ? (
+              {starterChipsVisible ? (
                 <StarterChips
                   className="mt-3"
                   onPick={(_prompt, mode) => {
