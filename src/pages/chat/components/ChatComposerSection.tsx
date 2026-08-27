@@ -136,7 +136,7 @@ export function ChatComposerSection(props: ChatComposerSectionProps) {
 
             {/* Mobile: same greeting, centered in the middle of the screen. */}
             {isEmpty && desktopGreeting ? (
-              <div className="md:hidden fixed inset-0 z-0 flex items-center justify-center px-8 pb-32 pointer-events-none">
+              <div className="md:hidden fixed inset-0 z-0 flex items-center justify-center px-8 pb-[42vh] pointer-events-none">
                 <div className="text-center">{desktopGreeting}</div>
               </div>
             ) : null}
