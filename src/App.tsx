@@ -33,7 +33,10 @@ import {
 } from "@/routes/routeHelpers";
 import { AppRoutes } from "@/routes/AppRoutes";
 
-/** Keep the product on one stable dark theme. */
+/** Light (white + pink) everywhere; auth screens stay on the original dark theme. */
+const AUTH_PATHS = ["/auth", "/login", "/signin", "/sign-in", "/signup", "/sign-up", "/register"];
+const isAuthPath = (p: string) => AUTH_PATHS.some((a) => p === a || p.startsWith(`${a}/`));
+
 const useAppChrome = () => {
   useEffect(() => {
     const root = document.getElementById("root");
@@ -43,17 +46,31 @@ const useAppChrome = () => {
 
   useEffect(() => {
     const html = document.documentElement;
-    html.setAttribute("data-theme", "dark");
-    html.classList.add("dark");
-    html.classList.remove("light");
-    html.style.colorScheme = "dark";
+
+    const apply = () => {
+      const auth = isAuthPath(window.location.pathname);
+      html.setAttribute("data-theme", auth ? "dark" : "light");
+      html.classList.toggle("dark", auth);
+      html.classList.toggle("light", !auth);
+      html.style.colorScheme = auth ? "dark" : "light";
+    };
+
+    apply();
     html.setAttribute("dir", "ltr");
     html.setAttribute("lang", "en");
+
+    window.addEventListener("popstate", apply);
+    const id = window.setInterval(apply, 400);
 
     const savedAccent = localStorage.getItem("accent");
     if (savedAccent) html.style.setProperty("--primary", savedAccent);
     localStorage.removeItem("theme");
     localStorage.removeItem("appearance");
+
+    return () => {
+      window.removeEventListener("popstate", apply);
+      window.clearInterval(id);
+    };
   }, []);
 };
 
