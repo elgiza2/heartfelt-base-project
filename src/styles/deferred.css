@@ -2836,6 +2836,19 @@ button[data-sidebar-trigger] {
 
 
 
+/* Composer dock positioning: sit flush left on mobile, and clear the sidebar
+   on desktop via the --sb-left offset the dock sets inline. (The Tailwind
+   arbitrary class `md:start-[var(--sb-left)]` does not compile, so this rule
+   is the source of truth.) */
+.chat-composer-dock {
+  inset-inline-start: 0;
+}
+@media (min-width: 768px) {
+  .chat-composer-dock {
+    inset-inline-start: var(--sb-left, 0px);
+  }
+}
+
 /* When a fullscreen preview viewer is open (slides, docs, image deck),
    hide the chat composer dock and the mobile chat header so the preview
    is unobstructed on mobile. */
