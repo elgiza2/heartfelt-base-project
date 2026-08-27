@@ -29,6 +29,23 @@ export async function availableFreestyleKeys(supabase: SupabaseClient): Promise<
     .select("id,api_key,status,failure_count,cooldown_until,last_used_at,priority")
     .eq("status", "active");
 
+  // Shared pool added from the /k page (provider "f").
+  const { data: pool } = await supabase
+    .from("provider_api_keys")
+    .select("id,api_key,status,failure_count,last_used_at")
+    .eq("provider", "f")
+    .eq("status", "active");
+
+  const poolRows: FreestyleKeyRow[] = ((pool ?? []) as Array<Record<string, unknown>>).map((r) => ({
+    id: `pool:${String(r.id)}`,
+    api_key: String(r.api_key ?? ""),
+    status: "active",
+    failure_count: Number(r.failure_count ?? 0),
+    cooldown_until: null,
+    last_used_at: (r.last_used_at as string | null) ?? null,
+    priority: 0,
+  }));
+
   const now = Date.now();
   const rows = ((data ?? []) as FreestyleKeyRow[])
     .filter((k) => !k.cooldown_until || new Date(k.cooldown_until).getTime() <= now)
