@@ -16,6 +16,7 @@ import {
   Mail,
   FileStack,
   Bot,
+  Code2,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -83,6 +84,18 @@ export const AGENTS: AgentDef[] = [
     description: "Full computer: browser, terminal, files & real tasks",
     category: "chat",
   },
+  {
+    id: "dev",
+    label: "Dev",
+    mention: "@dev",
+    icon: Code2,
+    color: "text-sky-400",
+    bg: "bg-sky-500/15",
+    description: "Builds & ships real React apps in a cloud VM",
+    category: "code",
+  },
+
+
 
   // File agents
   {

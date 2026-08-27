@@ -153,6 +153,64 @@ function manusAdminDevPlugin(): Plugin {
   };
 }
 
+/** Dev-server equivalents of api/dev-admin.ts and api/dev-agent.ts (Dev Agent). */
+function devAgentDevPlugin(): Plugin {
+  const json = (
+    path: string,
+    run: (payload: unknown) => Promise<{ status: number; body: Record<string, unknown> }>,
+  ) =>
+    (server: ViteDevServer) => {
+      server.middlewares.use(path, (req, res) => {
+        res.setHeader("Content-Type", "application/json");
+        res.setHeader("Cache-Control", "no-store");
+        if (req.method === "OPTIONS") {
+          res.statusCode = 204;
+          res.end();
+          return;
+        }
+        if (req.method !== "POST") {
+          res.statusCode = 405;
+          res.end(JSON.stringify({ error: "Method not allowed" }));
+          return;
+        }
+        const chunks: Buffer[] = [];
+        req.on("data", (c) => chunks.push(Buffer.from(c)));
+        req.on("end", async () => {
+          let payload: unknown = null;
+          try {
+            payload = chunks.length ? JSON.parse(Buffer.concat(chunks).toString("utf8")) : null;
+          } catch {
+            payload = null;
+          }
+          try {
+            const result = await run(payload);
+            res.statusCode = result.status;
+            res.end(JSON.stringify(result.body));
+          } catch (error) {
+            res.statusCode = 500;
+            res.end(
+              JSON.stringify({ error: error instanceof Error ? error.message : "dev_agent_failed" }),
+            );
+          }
+        });
+      });
+    };
+
+  return {
+    name: "dev-agent-dev",
+    configureServer(server: ViteDevServer) {
+      json("/api/dev-admin", async (payload) => {
+        const { handleDevAdmin } = await import("./src/lib/devagent/adminCore");
+        return handleDevAdmin(payload as never, process.env.M_ADMIN_PASSWORD);
+      })(server);
+      json("/api/dev-agent", async (payload) => {
+        const { handleDevAgent } = await import("./src/lib/devagent/core");
+        return handleDevAgent(payload as never);
+      })(server);
+    },
+  };
+}
+
 /** Dev-server equivalent of api/computer-agent.ts (in-chat Computer Agent). */
 function computerAgentDevPlugin(): Plugin {
   return {
@@ -569,6 +627,7 @@ export default defineConfig({
     integrationAppTokenDevPlugin(),
     anythingApiDevPlugin(),
     manusAdminDevPlugin(),
+    devAgentDevPlugin(),
     computerAgentDevPlugin(),
     longRunDevPlugin(),
     mcpDevPlugin(),
