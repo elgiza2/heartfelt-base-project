@@ -323,7 +323,7 @@ button.ms-card { cursor: pointer; }
 .ms-row-icon { width: 18px; height: 18px; flex-shrink: 0; color: var(--mn-fg); opacity: 0.95; }
 .ms-row-label { flex: 1; font-size: 14px; font-weight: 500; }
 .ms-row-trailing { font-size: 13px; color: var(--mn-muted); flex-shrink: 0; }
-.ms-row-chev { width: 15px; height: 15px; flex-shrink: 0; color: rgba(232,232,232,0.4); }
+.ms-row-chev { width: 15px; height: 15px; flex-shrink: 0; color: hsl(var(--muted-foreground)); }
 .ms-row-ext { font-size: 13px; line-height: 1; }
 .ms-spacer { height: calc(env(safe-area-inset-bottom, 0px) + 28px); }
 .ms-menu-scrim {
