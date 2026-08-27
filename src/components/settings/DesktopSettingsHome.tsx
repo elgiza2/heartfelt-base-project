@@ -101,6 +101,7 @@ export function DesktopSettingsHome() {
         { icon: SupportIcon, label: tx("Help & Support"), path: "/settings/support" },
         { icon: PrivacyIcon, label: tx("Privacy & Data"), path: "/settings/privacy" },
         { icon: StatusIcon, label: tx("System status"), path: "/settings/system-status" },
+        { icon: (p) => <Info {...p} />, label: tx("About us"), onClick: () => window.open("https://about.megsyai.com", "_blank", "noopener") },
       ],
     },
   ];

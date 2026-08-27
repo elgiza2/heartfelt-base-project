@@ -14,6 +14,7 @@ import {
   UserRound,
   HelpCircle,
   Asterisk,
+  Info,
   LogOut,
   Wallet,
   Gift,
