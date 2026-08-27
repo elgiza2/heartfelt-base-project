@@ -32,6 +32,7 @@ import {
   DodoReturnRedirect,
 } from "@/routes/routeHelpers";
 import { AppRoutes } from "@/routes/AppRoutes";
+import { applyTheme } from "@/lib/theme";
 
 /** Theme: light (white + pink) by default, dark available; auth screens always dark. */
 const useAppChrome = () => {
