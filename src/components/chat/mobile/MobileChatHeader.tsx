@@ -20,7 +20,6 @@ import {
   Send,
   Trash2,
 } from "lucide-react";
-import MegsyStar from "@/components/files/MegsyStar";
 import { prefetchRoute } from "@/hooks/usePrefetchRoute";
 import { t as uiT, useUserLang } from "@/lib/authI18n";
 import { UpgradePlanButton } from "@/components/billing/UpgradePlanButton";
