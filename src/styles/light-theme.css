@@ -153,3 +153,21 @@ html.light {
   --overlay-black-50: rgba(23, 23, 26, 0.10);
   --overlay-black-55: rgba(23, 23, 26, 0.12);
 }
+
+/* Composer card — subtle pink-tinted surface so it reads on white */
+html.light .composer-card,
+html.light .chat-composer-frame {
+  background-color: #fdfafb !important;
+  border: 1px solid var(--hairline) !important;
+  box-shadow: 0 6px 24px -12px rgba(23, 23, 26, 0.18) !important;
+}
+html.light .composer-card textarea,
+html.light .chat-composer-frame textarea {
+  color: var(--ink-1) !important;
+  caret-color: hsl(var(--primary));
+}
+html.light aside.bg-sidebar,
+html.light [data-sidebar] {
+  background-color: #fbf8fa !important;
+  border-right-color: var(--hairline) !important;
+}
