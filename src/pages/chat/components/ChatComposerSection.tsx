@@ -85,7 +85,8 @@ export function ChatComposerSection(props: ChatComposerSectionProps) {
   // Every service now renders through the single ComposerServicePanel chip,
   // so there is exactly one indicator on screen for every mode.
   const isDocsAgent = d.selectedAgent?.id === "docs";
-  const hasActiveService = isDocsAgent || (d.chatMode && d.chatMode !== "normal");
+  const isDevAgent = d.selectedAgent?.id === "dev";
+  const hasActiveService = isDocsAgent || isDevAgent || (d.chatMode && d.chatMode !== "normal");
   const hasHeaderService = hasActiveService;
 
   // Hide chips whenever a service is active; also hide on mobile once the
@@ -169,12 +170,13 @@ export function ChatComposerSection(props: ChatComposerSectionProps) {
                       <ComposerServicePanel
                         chatMode={d.chatMode}
                         isDocsAgent={isDocsAgent}
+                        isDevAgent={isDevAgent}
                         mediaModel={d.mediaModel ?? null}
                         setMediaModel={d.setMediaModel}
                         slidesTemplate={d.slidesTemplate}
                         onOpenTemplatePicker={() => d.setSlidesPickerOpen?.(true)}
                         onClear={() => {
-                          if (isDocsAgent) d.setSelectedAgent?.(null);
+                          if (isDocsAgent || isDevAgent) d.setSelectedAgent?.(null);
                           else d.handleModeChange("normal");
                           setModesShown(true);
                         }}
