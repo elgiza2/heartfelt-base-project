@@ -1,6 +1,4 @@
-import { useState } from "react";
 import {
-  X,
   ImagePlus,
   Code2,
   Video as VideoIcon,
@@ -9,13 +7,6 @@ import {
   FileText,
   Plug,
 } from "lucide-react";
-import researchImg from "@/assets/svc2-research.png";
-import imageImg from "@/assets/svc2-image.png";
-import videoImg from "@/assets/svc2-video.png";
-import slidesImg from "@/assets/svc2-slides.png";
-import webImg from "@/assets/svc2-web.png";
-import docsImg from "@/assets/svc2-docs.png";
-import integrationsImg from "@/assets/svc-integrations.png";
 
 export interface StarterCardsProps {
   /** Activates the service chip for the picked card. */
