@@ -117,45 +117,24 @@ export function StarterChips({ onPick, className = "" }: StarterCardsProps) {
 }
 
 export function StarterCards({ onPick, className = "" }: StarterCardsProps) {
-  const [dismissed, setDismissed] = useState(false);
-  if (dismissed) return null;
-
   return (
     <div className={`w-full md:hidden ${className}`}>
-      <div className="flex items-center justify-between px-2 pb-2">
-        <span className="text-[13px] font-medium text-foreground/70">Get started</span>
-        <button
-          type="button"
-          aria-label="Hide suggestions"
-          onClick={() => setDismissed(true)}
-          className="p-1 rounded-full text-foreground/45 hover:text-foreground/80 transition-colors"
-        >
-          <X className="w-4 h-4" />
-        </button>
-      </div>
-
-      <div className="flex gap-2.5 overflow-x-auto px-2 pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden snap-x">
+      <div className="flex gap-2 overflow-x-auto px-2 pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden snap-x">
         {CARDS.map((c) => (
           <button
             key={c.id}
             type="button"
             onClick={() => handleCardClick(c, onPick)}
-            className="snap-start shrink-0 w-[84%] max-w-[330px] flex items-center gap-3 rounded-[16px] border-0 bg-[color:var(--chat-claude-composer,#262627)] hover:brightness-110 active:scale-[0.99] transition-all px-3.5 py-2 text-start"
+            className="snap-start shrink-0 flex items-center gap-2.5 rounded-2xl border border-border/40 bg-background hover:bg-accent/60 active:scale-[0.98] transition-all px-2.5 py-2 text-start shadow-sm"
           >
-            <img
-              src={c.img}
-              alt=""
-              loading="lazy"
-              decoding="async"
-              width={512}
-              height={512}
-              className="w-[46px] h-[46px] object-contain shrink-0"
-            />
-            <span className="min-w-0 flex flex-col gap-0.5">
-              <span className="text-[15px] font-bold leading-tight text-foreground truncate">
+            <div className="grid place-items-center w-9 h-9 rounded-xl bg-primary/10 text-primary shrink-0">
+              <c.Icon className="w-[18px] h-[18px]" strokeWidth={1.8} />
+            </div>
+            <span className="min-w-0 flex flex-col gap-0.5 pe-1">
+              <span className="text-[13px] font-semibold leading-tight text-foreground whitespace-nowrap">
                 {c.title}
               </span>
-              <span className="text-[11.5px] leading-snug text-foreground/45 truncate">
+              <span className="text-[10.5px] leading-snug text-muted-foreground whitespace-nowrap">
                 {c.desc}
               </span>
             </span>
