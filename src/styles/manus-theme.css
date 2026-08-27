@@ -8,7 +8,7 @@
    ───────────────────────────────────────────────────────────── */
 
 @media (min-width: 768px) {
-  [data-shell="manus"] {
+  html.dark [data-shell="manus"] {
     /* Keep the subtree aligned with the global dark tokens so every
        shadcn component (cards, buttons, popovers, inputs) matches. */
     --background: 0 0% 11%;
@@ -36,91 +36,91 @@
   }
 
   /* Hide the mobile blue gradient on desktop when manus theme is active */
-  [data-shell="manus"] .chat-mobile-blue-bg,
-  [data-shell="manus"] .chat-ambient-glow {
+  html.dark [data-shell="manus"] .chat-mobile-blue-bg,
+  html.dark [data-shell="manus"] .chat-ambient-glow {
     display: none !important;
   }
 
   /* Sidebar — match the charcoal canvas */
-  [data-shell="manus"] aside.bg-sidebar,
-  [data-shell="manus"] [data-sidebar] {
+  html.dark [data-shell="manus"] aside.bg-sidebar,
+  html.dark [data-shell="manus"] [data-sidebar] {
     background-color: hsl(var(--sidebar-background)) !important;
     color: hsl(40 15% 94%) !important;
     border-right-color: hsl(var(--sidebar-border)) !important;
   }
-  [data-shell="manus"] aside.bg-sidebar * {
+  html.dark [data-shell="manus"] aside.bg-sidebar * {
     border-color: hsl(var(--border));
   }
 
   /* Editorial serif treatment for greetings and large display text */
-  [data-shell="manus"] h1,
-  [data-shell="manus"] h2,
-  [data-shell="manus"] .manus-serif,
-  [data-shell="manus"] [class*="text-3xl"],
-  [data-shell="manus"] [class*="text-4xl"],
-  [data-shell="manus"] [class*="text-5xl"] {
+  html.dark [data-shell="manus"] h1,
+  html.dark [data-shell="manus"] h2,
+  html.dark [data-shell="manus"] .manus-serif,
+  html.dark [data-shell="manus"] [class*="text-3xl"],
+  html.dark [data-shell="manus"] [class*="text-4xl"],
+  html.dark [data-shell="manus"] [class*="text-5xl"] {
     font-family: "Instrument Serif", ui-serif, Georgia, serif;
     font-weight: 400;
     letter-spacing: -0.01em;
   }
 
   /* Mono caption helper */
-  [data-shell="manus"] .manus-mono,
-  [data-shell="manus"] code,
-  [data-shell="manus"] kbd {
+  html.dark [data-shell="manus"] .manus-mono,
+  html.dark [data-shell="manus"] code,
+  html.dark [data-shell="manus"] kbd {
     font-family: ui-monospace, "JetBrains Mono", SFMono-Regular, Menlo,
       Consolas, monospace;
   }
 
   /* Hairline borders globally inside the shell */
-  [data-shell="manus"] .border,
-  [data-shell="manus"] .border-t,
-  [data-shell="manus"] .border-b,
-  [data-shell="manus"] .border-l,
-  [data-shell="manus"] .border-r,
-  [data-shell="manus"] .border-border,
-  [data-shell="manus"] .border-border\/70,
-  [data-shell="manus"] .border-border\/50,
-  [data-shell="manus"] .border-border\/40,
-  [data-shell="manus"] .border-border\/30 {
+  html.dark [data-shell="manus"] .border,
+  html.dark [data-shell="manus"] .border-t,
+  html.dark [data-shell="manus"] .border-b,
+  html.dark [data-shell="manus"] .border-l,
+  html.dark [data-shell="manus"] .border-r,
+  html.dark [data-shell="manus"] .border-border,
+  html.dark [data-shell="manus"] .border-border\/70,
+  html.dark [data-shell="manus"] .border-border\/50,
+  html.dark [data-shell="manus"] .border-border\/40,
+  html.dark [data-shell="manus"] .border-border\/30 {
     border-color: hsl(var(--border));
   }
 
   /* Composer card — elevated dark surface on charcoal */
-  [data-shell="manus"] .composer-card,
-  [data-shell="manus"] .chat-composer-frame {
+  html.dark [data-shell="manus"] .composer-card,
+  html.dark [data-shell="manus"] .chat-composer-frame {
     background: hsl(var(--card)) !important;
     border: 1px solid hsl(var(--border)) !important;
     border-radius: 18px !important;
     box-shadow: 0 4px 12px -6px rgba(0, 0, 0, 0.6);
   }
-  [data-shell="manus"] .composer-card textarea,
-  [data-shell="manus"] .chat-composer-frame textarea {
+  html.dark [data-shell="manus"] .composer-card textarea,
+  html.dark [data-shell="manus"] .chat-composer-frame textarea {
     color: hsl(40 15% 94%) !important;
     caret-color: hsl(40 15% 94%);
   }
-  [data-shell="manus"] .composer-card textarea::placeholder {
+  html.dark [data-shell="manus"] .composer-card textarea::placeholder {
     color: hsl(40 6% 55%) !important;
   }
 
   /* User message bubble — light ink on dark canvas (high contrast) */
-  [data-shell="manus"] [data-role="user"],
-  [data-shell="manus"] .user-bubble {
+  html.dark [data-shell="manus"] [data-role="user"],
+  html.dark [data-shell="manus"] .user-bubble {
     background: hsl(var(--secondary)) !important;
     color: hsl(40 15% 94%) !important;
   }
 
   /* Soft scrollbars matching the dark palette */
-  [data-shell="manus"] ::-webkit-scrollbar { width: 10px; height: 10px; }
-  [data-shell="manus"] ::-webkit-scrollbar-thumb {
+  html.dark [data-shell="manus"] ::-webkit-scrollbar { width: 10px; height: 10px; }
+  html.dark [data-shell="manus"] ::-webkit-scrollbar-thumb {
     background: hsl(0 0% 22%);
     border-radius: 999px;
     border: 2px solid hsl(var(--background));
   }
-  [data-shell="manus"] ::-webkit-scrollbar-track { background: transparent; }
+  html.dark [data-shell="manus"] ::-webkit-scrollbar-track { background: transparent; }
 
   /* Floating Megsy "computer" canvas card — right side of the workspace */
-  [data-shell="manus"] .manus-canvas {
+  html.dark [data-shell="manus"] .manus-canvas {
     background: hsl(var(--card));
     border: 1px solid hsl(var(--border));
     border-radius: 18px;
@@ -128,7 +128,7 @@
   }
 
   /* Pill running indicator */
-  [data-shell="manus"] .manus-running-pill {
+  html.dark [data-shell="manus"] .manus-running-pill {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -142,7 +142,7 @@
     text-transform: uppercase;
     color: hsl(40 6% 62%);
   }
-  [data-shell="manus"] .manus-running-pill::before {
+  html.dark [data-shell="manus"] .manus-running-pill::before {
     content: "";
     width: 6px;
     height: 6px;

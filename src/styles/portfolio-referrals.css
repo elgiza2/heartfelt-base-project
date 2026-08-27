@@ -10,7 +10,7 @@
     0 8px 24px var(--overlay-black-35);
   position: relative;
   overflow: hidden;
-  color: #fff;
+  color: var(--ink-1);
 }
 .lg-liquid-glass:hover {
   background: rgba(255, 255, 255, 0.24);
@@ -99,12 +99,12 @@
   border-radius: 999px;
   font-size: 12.5px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--ink-2);
   letter-spacing: -0.01em;
   transition: color 180ms ease;
 }
 .ref-tab[data-active="true"] {
-  color: #fff;
+  color: var(--ink-1);
   background: hsl(0 0% 100% / 0.06);
   box-shadow: inset 0 0 0 1px rgba(201, 162, 76, 0.35);
 }
