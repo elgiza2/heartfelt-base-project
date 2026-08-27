@@ -33,10 +33,7 @@ import {
 } from "@/routes/routeHelpers";
 import { AppRoutes } from "@/routes/AppRoutes";
 
-/** Light (white + pink) everywhere; auth screens stay on the original dark theme. */
-const AUTH_PATHS = ["/auth", "/login", "/signin", "/sign-in", "/signup", "/sign-up", "/register"];
-const isAuthPath = (p: string) => AUTH_PATHS.some((a) => p === a || p.startsWith(`${a}/`));
-
+/** Theme: light (white + pink) by default, dark available; auth screens always dark. */
 const useAppChrome = () => {
   useEffect(() => {
     const root = document.getElementById("root");
@@ -47,32 +44,32 @@ const useAppChrome = () => {
   useEffect(() => {
     const html = document.documentElement;
 
-    const apply = () => {
-      const auth = isAuthPath(window.location.pathname);
-      html.setAttribute("data-theme", auth ? "dark" : "light");
-      html.classList.toggle("dark", auth);
-      html.classList.toggle("light", !auth);
-      html.style.colorScheme = auth ? "dark" : "light";
-    };
+    const apply = () => applyTheme();
 
     apply();
     html.setAttribute("dir", "ltr");
     html.setAttribute("lang", "en");
 
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
     window.addEventListener("popstate", apply);
+    window.addEventListener("megsy:theme", apply as EventListener);
+    mq.addEventListener?.("change", apply);
+    // Route changes come from the SPA router (no popstate); a light poll keeps
+    // the auth screens dark without coupling this to the router internals.
     const id = window.setInterval(apply, 400);
 
     const savedAccent = localStorage.getItem("accent");
     if (savedAccent) html.style.setProperty("--primary", savedAccent);
-    localStorage.removeItem("theme");
-    localStorage.removeItem("appearance");
 
     return () => {
       window.removeEventListener("popstate", apply);
+      window.removeEventListener("megsy:theme", apply as EventListener);
+      mq.removeEventListener?.("change", apply);
       window.clearInterval(id);
     };
   }, []);
 };
+
 
 const clearUserCaches = () => {
   const keysToRemove: string[] = [];
