@@ -242,19 +242,12 @@ const AnimatedInput = ({
       }
     }
 
-    // Check for @ mention
-    const atMatch = textBeforeCursor.match(/@(\w*)$/);
-    if (atMatch) {
-      setMentionOpen(true);
-      setMentionQuery(atMatch[1]);
+    // @ mention menu removed by design.
+    setMentionOpen(false);
+    setMentionQuery("");
+    if (!textBeforeCursor.match(/#(\w*)$/)) {
       setModelPickerOpen(false);
-    } else {
-      setMentionOpen(false);
-      setMentionQuery("");
-      if (!textBeforeCursor.match(/#(\w*)$/)) {
-        setModelPickerOpen(false);
-        setModelQuery("");
-      }
+      setModelQuery("");
     }
   };
 
@@ -313,15 +306,7 @@ const AnimatedInput = ({
   return (
     <div className="relative">
       <AnimatePresence>
-        {mentionOpen && (
-          <MentionDropdown
-            query={mentionQuery}
-            onSelect={handleMentionSelect}
-            onClose={() => setMentionOpen(false)}
-            visible={mentionOpen}
-            categories={mentionCategories}
-          />
-        )}
+        {/* @ mention dropdown removed by design. */}
         {modelPickerOpen && activeAgentModels.length > 0 && (
           <ModelPickerDropdown
             models={activeAgentModels}
