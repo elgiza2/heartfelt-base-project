@@ -47,7 +47,7 @@ export async function availableFreestyleKeys(supabase: SupabaseClient): Promise<
   }));
 
   const now = Date.now();
-  const rows = ((data ?? []) as FreestyleKeyRow[])
+  const rows = [...((data ?? []) as FreestyleKeyRow[]), ...poolRows]
     .filter((k) => !k.cooldown_until || new Date(k.cooldown_until).getTime() <= now)
     .sort((a, b) => {
       const pa = a.priority ?? 0;
