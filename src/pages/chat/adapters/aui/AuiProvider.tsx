@@ -48,7 +48,10 @@ export function AuiProvider({
 
   return (
     <AssistantRuntimeProvider runtime={runtime}>
-      {attachedFiles !== undefined && (
+      {/* PERF: mount the composer bridge only while attachments actually exist.
+          Subscribing to the composer runtime on every chat render triggered an
+          assistant-ui resource loop ("Maximum update depth exceeded"). */}
+      {attachedFiles !== undefined && attachedFiles.length > 0 && (
         <AttachmentsSync attachedFiles={attachedFiles} />
       )}
       <RegisteredToolUIs />
