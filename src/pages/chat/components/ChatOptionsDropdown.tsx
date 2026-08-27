@@ -144,10 +144,11 @@ export function ChatOptionsDropdown(props: ChatOptionsDropdownProps) {
         {isDesktop ? (
           <button
             aria-label={tx("Chat options")}
-            className="flex items-center gap-1 px-2.5 py-1.5 rounded-full text-[14px] font-black text-brand-parchment bg-surface-1 border-2 border-surface-4 active:translate-x-[2px] active:translate-y-[2px] transition-all"
+            className="flex items-center gap-1 px-2.5 py-1.5 rounded-full text-[14px] font-black text-foreground bg-card border border-border hover:bg-muted active:translate-x-[2px] active:translate-y-[2px] transition-all"
           >
-            <MoreHorizontal className="w-[18px] h-[18px] text-foreground" color="#ffffff" strokeWidth={2.6} />
+            <MoreHorizontal className="w-[18px] h-[18px] text-foreground" strokeWidth={2.4} />
           </button>
+
         ) : (
           <button
             className="md:hidden w-9 h-9 flex items-center justify-center rounded-full text-brand-ink bg-brand-action border-2 border-brand-ink shadow-[2px_2px_0_rgba(59,130,246,0.35)] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all"

@@ -209,3 +209,49 @@ html.light [data-sidebar] {
   background-color: #fbf8fa !important;
   border-right-color: var(--hairline) !important;
 }
+
+/* Brand wordmark: the silver→white shimmer is dark-mode only. In light mode
+   render solid ink so "Megsy" is legible in the sidebar / headers. */
+html.light .brand-word {
+  background: none !important;
+  -webkit-text-fill-color: var(--ink-1) !important;
+  color: var(--ink-1) !important;
+  animation: none !important;
+}
+
+/* Settings canvas: soft grey page in light mode so the white cards read as
+   separate surfaces (dark mode keeps the standard background). */
+.settings-canvas-bg { background-color: hsl(var(--background)); }
+html.light .settings-canvas-bg { background-color: #f3f3f5; }
+
+/* ── Chat transcript legibility in light mode ────────────────
+   Two legacy dark-only rules paint assistant prose white
+   (`.chat-surface-dark .prose-chat` and the Claude skin). Scope
+   them back to ink so the answer is readable on the white canvas. */
+html.light .chat-surface-dark .prose-chat,
+html.light .chat-surface-dark .prose-chat p,
+html.light .chat-surface-dark .prose-chat li,
+html.light .chat-surface-dark .prose-chat strong,
+html.light .chat-surface-dark .prose-chat em,
+html.light .chat-surface-dark .prose-chat blockquote,
+html.light .chat-surface-dark .prose-chat th,
+html.light .chat-surface-dark .prose-chat td,
+html.light [data-skin="claude"] .prose-chat,
+html.light [data-skin="claude"] .prose-chat p,
+html.light [data-skin="claude"] .prose-chat li,
+html.light .prose-chat,
+html.light .prose-chat p,
+html.light .prose-chat li {
+  color: var(--ink-1) !important;
+  -webkit-text-fill-color: var(--ink-1) !important;
+}
+html.light .prose-chat a,
+html.light [data-skin="claude"] .prose-chat a {
+  color: hsl(var(--primary)) !important;
+  -webkit-text-fill-color: hsl(var(--primary)) !important;
+}
+html.light .prose-chat code,
+html.light .prose-chat pre,
+html.light .prose-chat pre * {
+  -webkit-text-fill-color: currentColor !important;
+}

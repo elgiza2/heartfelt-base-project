@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 import { ArrowLeft, PanelLeft } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useConfirm } from "@/components/common/ConfirmDialog";
-import { useIsDark } from "@/hooks/useThemeMode";
 import AppLayout from "@/layouts/AppLayout";
 import { useSettingsShell } from "@/components/settings/SettingsShell";
 import { useSidebarCollapsed } from "@/hooks/useSidebarCollapsed";
@@ -85,7 +84,6 @@ export function DesktopSettingsLayout({
   const shell = useSettingsShell();
   const [collapsed, setCollapsed, toggleCollapsed] = useSidebarCollapsed();
   const go = (path: string) => navigate(path);
-  const settingsVideoRef = useRef<HTMLVideoElement>(null);
 
   const confirm = useConfirm();
 
@@ -107,19 +105,7 @@ export function DesktopSettingsLayout({
   };
 
   const isSettingsHome = location.pathname === "/settings";
-  const isDark = useIsDark();
 
-  useEffect(() => {
-    if (!isSettingsHome) return;
-    const video = settingsVideoRef.current;
-    if (!video) return;
-    video.play().catch(() => {});
-    const handleVisibility = () => {
-      if (!document.hidden) video.play().catch(() => {});
-    };
-    document.addEventListener("visibilitychange", handleVisibility);
-    return () => document.removeEventListener("visibilitychange", handleVisibility);
-  }, [isSettingsHome]);
 
   // When mounted inside the persistent SettingsShell, portal just the inner
   // content (header + body) into the shell's main area so the sidebar/chrome
@@ -146,30 +132,9 @@ export function DesktopSettingsLayout({
         )}
       >
         <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
-          {isDark ? (
-            <>
-              <video
-                ref={settingsVideoRef}
-                className="absolute inset-0 h-full w-full object-cover"
-                poster="/route-assets/media/settings-background-poster.jpg"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="auto"
-              >
-                <source
-                  src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260411_104032_69319010-2458-492b-b04d-b40a5dfa4482.mp4"
-                  type="video/mp4"
-                />
-              </video>
-              <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/60 to-black/75" />
-            </>
-          ) : (
-            <div className="absolute inset-0 bg-background" />
-          )}
+          <div className="absolute inset-0 settings-canvas-bg" />
         </div>
-        <div className="pointer-events-none absolute inset-0 z-[1] settings-desktop-grid" aria-hidden />
+
         <div className="relative z-10 h-full w-full flex">
           {isSettingsHome && (
             <aside
