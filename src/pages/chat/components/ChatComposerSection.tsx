@@ -6,7 +6,7 @@ import { MentionDropdown } from "./MentionDropdown";
 import { ComposerMobileModeBar } from "./ComposerMobileModeBar";
 import { ComposerAnimatedInput } from "./ComposerAnimatedInput";
 import ComposerServicePanel from "./ComposerServicePanel";
-import StarterCards from "./StarterCards";
+import StarterCards, { StarterChips } from "./StarterCards";
 
 import type { AttachedFile } from "../hooks/useAttachments";
 
@@ -195,7 +195,18 @@ export function ChatComposerSection(props: ChatComposerSectionProps) {
                 </div>
               </div>
 
-              {/* Desktop chips row removed by design: modes live in the + menu. */}
+              {/* Desktop-only starter chips below the composer (icons, no images). */}
+              {isEmpty ? (
+                <StarterChips
+                  className="mt-3"
+                  onPick={(_prompt, mode) => {
+                    if (mode) {
+                      d.handleModeChange?.(mode);
+                      setModesShown(false);
+                    }
+                  }}
+                />
+              ) : null}
 
             </div>
 

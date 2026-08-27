@@ -1,5 +1,14 @@
 import { useState } from "react";
-import { X } from "lucide-react";
+import {
+  X,
+  ImagePlus,
+  Code2,
+  Video as VideoIcon,
+  Presentation,
+  ScanSearch,
+  FileText,
+  Plug,
+} from "lucide-react";
 import researchImg from "@/assets/svc2-research.png";
 import imageImg from "@/assets/svc2-image.png";
 import videoImg from "@/assets/svc2-video.png";
@@ -20,6 +29,7 @@ const CARDS = [
     id: "image",
     mode: "images",
     img: imageImg,
+    Icon: ImagePlus,
     title: "Generate images",
     desc: "Photoreal images and edits",
   },
@@ -27,6 +37,7 @@ const CARDS = [
     id: "web",
     mode: "code",
     img: webImg,
+    Icon: Code2,
     title: "Build a website",
     desc: "Live page with real code",
   },
@@ -34,6 +45,7 @@ const CARDS = [
     id: "video",
     mode: "video",
     img: videoImg,
+    Icon: VideoIcon,
     title: "Generate video",
     desc: "Cinematic clips from a prompt",
   },
@@ -41,6 +53,7 @@ const CARDS = [
     id: "slides",
     mode: "slides",
     img: slidesImg,
+    Icon: Presentation,
     title: "Presentation",
     desc: "Designed slides with charts",
   },
@@ -48,6 +61,7 @@ const CARDS = [
     id: "research",
     mode: "deep-research",
     img: researchImg,
+    Icon: ScanSearch,
     title: "Deep research",
     desc: "Sourced, referenced report",
   },
@@ -55,23 +69,59 @@ const CARDS = [
     id: "docs",
     mode: "docs",
     img: docsImg,
+    Icon: FileText,
     title: "Analyze documents",
     desc: "Tables and answers from files",
   },
   {
     id: "integrations",
     img: integrationsImg,
+    Icon: Plug,
     title: "Integrations",
     desc: "Connect and use your apps",
   },
 ];
+
+const handleCardClick = (
+  c: (typeof CARDS)[number],
+  onPick: StarterCardsProps["onPick"],
+) => {
+  if (c.id === "integrations") {
+    window.dispatchEvent(new CustomEvent("megsy:open-integrations"));
+    return;
+  }
+  onPick("", (c as { mode?: string }).mode);
+};
+
+/** Desktop-only: compact icon chips shown below the composer (no images). */
+export function StarterChips({ onPick, className = "" }: StarterCardsProps) {
+  return (
+    <div
+      className={`hidden md:flex flex-wrap items-center justify-center gap-2 ${className}`}
+    >
+      {CARDS.map((c) => (
+        <button
+          key={c.id}
+          type="button"
+          onClick={() => handleCardClick(c, onPick)}
+          className="flex items-center gap-1.5 rounded-full border border-foreground/10 bg-foreground/[0.04] hover:bg-foreground/[0.09] active:scale-[0.98] transition-all px-3.5 h-8"
+        >
+          <c.Icon className="w-[14px] h-[14px] text-foreground/60 shrink-0" strokeWidth={1.9} />
+          <span className="text-[12.5px] font-medium text-foreground/75 whitespace-nowrap">
+            {c.title}
+          </span>
+        </button>
+      ))}
+    </div>
+  );
+}
 
 export function StarterCards({ onPick, className = "" }: StarterCardsProps) {
   const [dismissed, setDismissed] = useState(false);
   if (dismissed) return null;
 
   return (
-    <div className={`w-full ${className}`}>
+    <div className={`w-full md:hidden ${className}`}>
       <div className="flex items-center justify-between px-2 pb-2">
         <span className="text-[13px] font-medium text-foreground/70">Get started</span>
         <button
@@ -89,13 +139,7 @@ export function StarterCards({ onPick, className = "" }: StarterCardsProps) {
           <button
             key={c.id}
             type="button"
-            onClick={() => {
-              if (c.id === "integrations") {
-                window.dispatchEvent(new CustomEvent("megsy:open-integrations"));
-                return;
-              }
-              onPick("", (c as { mode?: string }).mode);
-            }}
+            onClick={() => handleCardClick(c, onPick)}
             className="snap-start shrink-0 w-[84%] max-w-[330px] flex items-center gap-3 rounded-[16px] border-0 bg-[color:var(--chat-claude-composer,#262627)] hover:brightness-110 active:scale-[0.99] transition-all px-3.5 py-2 text-start"
           >
             <img
