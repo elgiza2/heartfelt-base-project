@@ -251,11 +251,12 @@ const manusCss = `
 .ms-screen { width: 100%; max-width: 420px; }
 .ms-header {
   position: sticky; top: 0; z-index: 5;
-  display: flex; align-items: center; justify-content: space-between;
+  display: grid; grid-template-columns: 34px 1fr 34px; align-items: center;
   padding: calc(env(safe-area-inset-top, 0px) + 8px) 10px 8px;
   background: var(--mn-bg);
 }
 .ms-hbtn {
+  grid-column: 3;
   position: relative; width: 34px; height: 34px;
   display: inline-flex; align-items: center; justify-content: center;
   background: transparent; border: 0; color: var(--mn-fg); cursor: pointer;
@@ -263,6 +264,7 @@ const manusCss = `
 }
 .ms-hicon { width: 20px; height: 20px; }
 .ms-brand {
+  grid-column: 2; text-align: center;
   margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -0.01em;
   font-family: "Times New Roman", Georgia, serif;
 }
