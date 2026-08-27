@@ -946,7 +946,7 @@ const AppSidebar = ({
                     </span>
                     <span
                       className="text-[11px] truncate leading-none"
-                      style={{ color: "rgba(255,255,255,0.40)", fontWeight: 500, letterSpacing: "0.01em" }}
+                      style={{ color: "hsl(var(--sidebar-foreground) / 0.62)", fontWeight: 500, letterSpacing: "0.01em" }}
                     >
                       Manage account
                     </span>
