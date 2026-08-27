@@ -18,13 +18,30 @@ interface ManusKeyRow {
 }
 
 const STORAGE_KEY = "m_admin_pw";
-const ENDPOINT = "/api/manus-admin";
+
+type Provider = "manus" | "freestyle";
+
+const PROVIDERS: Record<Provider, { endpoint: string; label: string; hint: string }> = {
+  manus: {
+    endpoint: "/api/manus-admin",
+    label: "Manus",
+    hint: "مجمّع المفاتيح — لو مفتاح فشل أو خلص رصيده يتحوّل تلقائيًا للتالي.",
+  },
+  freestyle: {
+    endpoint: "/api/dev-admin",
+    label: "Freestyle",
+    hint: "مفاتيح بيئة التشغيل والنشر لوكيل البرمجة (VMs / Git / Deploy).",
+  },
+};
+
+let activeEndpoint = PROVIDERS.manus.endpoint;
 
 async function callAdmin<T = Record<string, unknown>>(
   password: string,
   body: Record<string, unknown>,
+  endpoint: string = activeEndpoint,
 ): Promise<T> {
-  const resp = await fetch(ENDPOINT, {
+  const resp = await fetch(endpoint, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ ...body, password }),
