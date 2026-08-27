@@ -146,30 +146,9 @@ export function DesktopSettingsLayout({
         )}
       >
         <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
-          {isDark ? (
-            <>
-              <video
-                ref={settingsVideoRef}
-                className="absolute inset-0 h-full w-full object-cover"
-                poster="/route-assets/media/settings-background-poster.jpg"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="auto"
-              >
-                <source
-                  src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260411_104032_69319010-2458-492b-b04d-b40a5dfa4482.mp4"
-                  type="video/mp4"
-                />
-              </video>
-              <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/60 to-black/75" />
-            </>
-          ) : (
-            <div className="absolute inset-0 bg-background" />
-          )}
+          <div className="absolute inset-0 bg-background" />
         </div>
-        <div className="pointer-events-none absolute inset-0 z-[1] settings-desktop-grid" aria-hidden />
+
         <div className="relative z-10 h-full w-full flex">
           {isSettingsHome && (
             <aside
