@@ -15,7 +15,7 @@
  */
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import MegsyStar from "@/components/files/MegsyStar";
+import MegsyStar from "@/components/branding/MegsyStar";
 import { useCredits } from "@/hooks/useCredits";
 import { prefetchRoute } from "@/hooks/usePrefetchRoute";
 import { useUserLang } from "@/lib/authI18n";
