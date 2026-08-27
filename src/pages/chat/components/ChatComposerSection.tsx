@@ -170,12 +170,13 @@ export function ChatComposerSection(props: ChatComposerSectionProps) {
                       <ComposerServicePanel
                         chatMode={d.chatMode}
                         isDocsAgent={isDocsAgent}
+                        isDevAgent={isDevAgent}
                         mediaModel={d.mediaModel ?? null}
                         setMediaModel={d.setMediaModel}
                         slidesTemplate={d.slidesTemplate}
                         onOpenTemplatePicker={() => d.setSlidesPickerOpen?.(true)}
                         onClear={() => {
-                          if (isDocsAgent) d.setSelectedAgent?.(null);
+                          if (isDocsAgent || isDevAgent) d.setSelectedAgent?.(null);
                           else d.handleModeChange("normal");
                           setModesShown(true);
                         }}

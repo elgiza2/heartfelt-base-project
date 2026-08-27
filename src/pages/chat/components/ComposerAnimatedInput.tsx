@@ -196,11 +196,15 @@ export function ComposerAnimatedInput(props: ComposerAnimatedInputProps) {
           ? PANEL_MODES.has(chatMode)
             ? null
             : chatMode
-          : selectedAgent?.id === "docs"
+          : selectedAgent?.id === "docs" || selectedAgent?.id === "dev"
             ? null
             : selectedAgent?.id || null
       }
-      activeAgentDef={selectedAgent?.id === "docs" ? null : selectedAgent || null}
+      activeAgentDef={
+        selectedAgent?.id === "docs" || selectedAgent?.id === "dev"
+          ? null
+          : selectedAgent || null
+      }
       onAgentSelect={(agent: AgentDef) => {
         if (agent.id === "operator") {
           tryActivateMegsyOs();
