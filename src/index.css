@@ -799,8 +799,8 @@ button[data-slides-preview-button] svg,
 
 @layer base {
   :root {
-    /* Light theme — clean white with a healthy pink accent. */
-    --background: 0 0% 100%;
+    /* Light theme — soft grey canvas, white cards, healthy pink accent. */
+    --background: 240 6% 96%;
     --foreground: 240 10% 12%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 12%;
@@ -816,16 +816,16 @@ button[data-slides-preview-button] svg,
     --accent-foreground: 340 55% 32%;
     --destructive: 0 72% 48%;
     --destructive-foreground: 0 0% 100%;
-    --border: 340 20% 90%;
-    --input: 340 20% 92%;
+    --border: 340 12% 86%;
+    --input: 340 12% 88%;
     --ring: 340 72% 60%;
     --sf-1: #ffffff;
-    --sf-2: #f7f4f6;
+    --sf-2: #f2f2f4;
     --sf-3: #fdf7fa;
     --ink-1: #17171a;
     --ink-2: rgba(23,23,26,0.72);
     --ink-3: rgba(23,23,26,0.52);
-    --hairline: rgba(23,23,26,0.10);
+    --hairline: rgba(23,23,26,0.16);
     --radius: 0.75rem;
     --glass: 0 0% 100% / 0.86;
     --glass-border: 340 20% 88%;
