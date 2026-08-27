@@ -16,6 +16,7 @@ import {
   Mail,
   FileStack,
   Bot,
+  Code2,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
