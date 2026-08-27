@@ -121,7 +121,7 @@ export function StarterCards({ onPick, className = "" }: StarterCardsProps) {
   if (dismissed) return null;
 
   return (
-    <div className={`w-full ${className}`}>
+    <div className={`w-full md:hidden ${className}`}>
       <div className="flex items-center justify-between px-2 pb-2">
         <span className="text-[13px] font-medium text-foreground/70">Get started</span>
         <button
