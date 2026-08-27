@@ -1,30 +1,39 @@
-// Compatibility helpers retained for older callers. Megsy is dark-only so
-// theme state never enters storage or triggers a second document repaint.
+// Compatibility layer for older callers — delegates to the single theme
+// controller in `src/lib/theme.ts` (light / dark / system).
+
+import { applyTheme, getStoredTheme, setTheme, type ThemeMode as Mode } from "@/lib/theme";
 
 export type ThemeMode = "light" | "dark";
 
 export function getThemeMode(): ThemeMode {
-  return "dark";
+  const m = getStoredTheme();
+  if (m === "system") {
+    return typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  }
+  return m;
 }
 
-export function setThemeMode(_mode: ThemeMode) {
+export function setThemeMode(mode: ThemeMode) {
   if (typeof document === "undefined") return;
-  document.documentElement.setAttribute("data-theme", "dark");
-  document.documentElement.classList.add("dark");
+  setTheme(mode);
 }
 
 export function toggleThemeMode(): ThemeMode {
-  setThemeMode("dark");
-  return "dark";
+  const next: ThemeMode = getThemeMode() === "dark" ? "light" : "dark";
+  setThemeMode(next);
+  return next;
 }
 
 // Appearance preference: "system" | "light" | "dark".
 export type Appearance = "system" | ThemeMode;
 
 export function getAppearance(): Appearance {
-  return "dark";
+  return getStoredTheme();
 }
 
-export function setAppearance(_mode: Appearance) {
-  setThemeMode("dark");
+export function setAppearance(mode: Appearance) {
+  setTheme(mode as Mode);
+  applyTheme(mode as Mode);
 }
