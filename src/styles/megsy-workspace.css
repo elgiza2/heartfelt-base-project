@@ -4,11 +4,11 @@
  * ========================================================================== */
 
 :root {
-  --mb-bg: var(--surface-1);
+  --mb-bg: var(--sf-1);
   --mb-chrome: #1c1c1b;
   --mb-panel: #1f201d;
   --mb-panel-2: #232420;
-  --mb-surface: var(--surface-1);
+  --mb-surface: var(--sf-1);
   --mb-border: rgba(255, 255, 255, 0.075);
   --mb-border-strong: var(--overlay-white-14);
   --mb-ink: #f7f7f5;
@@ -61,7 +61,7 @@
 .mb-pill-group {
   display: inline-flex;
   align-items: center;
-  background: var(--surface-1);
+  background: var(--sf-1);
   border: 1px solid var(--overlay-white-12);
   padding: 3px;
   border-radius: 10px;
@@ -168,13 +168,13 @@
 }
 .mb-divider {
   width: 1px;
-  background: var(--surface-2);
+  background: var(--sf-2);
   flex-shrink: 0;
 }
 .mb-divider--resize {
   width: 6px;
   background: transparent;
-  border-left: 1px solid var(--surface-2);
+  border-left: 1px solid var(--sf-2);
   cursor: col-resize;
   position: relative;
   transition:
@@ -284,7 +284,7 @@
 }
 .mb-msg-author--user::before {
   content: "U";
-  background: var(--surface-2);
+  background: var(--sf-2);
   border-color: transparent;
   color: var(--mb-ink-soft);
 }
@@ -295,7 +295,7 @@
   word-break: break-word;
 }
 .mb-msg-body--user {
-  background: var(--surface-2);
+  background: var(--sf-2);
   border: 1px solid rgba(255, 255, 255, 0.035);
   border-radius: 18px;
   padding: 12px 14px;
@@ -335,7 +335,7 @@
 }
 .mb-composer-shell {
   position: relative;
-  background: var(--surface-2);
+  background: var(--sf-2);
   border: 1px solid var(--overlay-white-12);
   border-radius: 22px;
   padding: 10px 12px;
@@ -482,7 +482,7 @@
 .mb-stage-frame {
   flex: 1;
   min-height: 0;
-  background: var(--surface-1);
+  background: var(--sf-1);
   border-radius: 12px 12px 12px 0;
   overflow: hidden;
   border: 1px solid var(--overlay-white-12);
@@ -496,7 +496,7 @@
   height: 100%;
   border: 0;
   display: block;
-  background: var(--surface-1);
+  background: var(--sf-1);
 }
 
 /* Device toggle ---------------------------------------------------------- */
@@ -684,7 +684,7 @@
   gap: 8px;
   height: 32px;
   padding: 0 10px 0 12px;
-  background: var(--surface-2);
+  background: var(--sf-2);
   border: 1px solid var(--overlay-white-06);
   border-radius: 999px;
   font-size: 12px;
@@ -877,7 +877,7 @@
 .mb-navrail {
   width: 60px;
   flex-shrink: 0;
-  background: var(--surface-1);
+  background: var(--sf-1);
   border-right: 1px solid var(--overlay-white-08);
   display: flex;
   flex-direction: column;

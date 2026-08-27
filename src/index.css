@@ -819,9 +819,9 @@ button[data-slides-preview-button] svg,
     --border: 340 20% 90%;
     --input: 340 20% 92%;
     --ring: 340 72% 60%;
-    --surface-1: #ffffff;
-    --surface-2: #f7f4f6;
-    --surface-3: #fdf7fa;
+    --sf-1: #ffffff;
+    --sf-2: #f7f4f6;
+    --sf-3: #fdf7fa;
     --ink-1: #17171a;
     --ink-2: rgba(23,23,26,0.72);
     --ink-3: rgba(23,23,26,0.52);
@@ -897,9 +897,9 @@ button[data-slides-preview-button] svg,
     --sidebar-accent-foreground: 0 0% 96%;
     --sidebar-border: 0 0% 23%;
     --sidebar-ring: 0 0% 60%;
-    --surface-1: #121212;
-    --surface-2: #232323;
-    --surface-3: #131313;
+    --sf-1: #121212;
+    --sf-2: #232323;
+    --sf-3: #131313;
     --ink-1: #ffffff;
     --ink-2: rgba(255,255,255,0.72);
     --ink-3: rgba(255,255,255,0.52);

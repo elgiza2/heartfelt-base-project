@@ -372,7 +372,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--glow-inner, var(--surface-1));
+  background: var(--glow-inner, var(--sf-1));
   color: var(--ink-1);
   font-weight: 600;
   font-size: 16px;
@@ -409,7 +409,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--glow-inner, var(--surface-1));
+  background: var(--glow-inner, var(--sf-1));
   border-radius: 12px;
   z-index: -1;
   box-shadow: 0 0 24px -2px var(--glow-halo, rgba(255, 215, 0, 0.35));
@@ -480,8 +480,8 @@
   min-width: 0;
   justify-content: flex-end;
   padding-left: 4px;
-  mask-image: linear-gradient(90deg, transparent 0%, var(--surface-1) 10%, var(--surface-1) 92%, transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, var(--surface-1) 10%, var(--surface-1) 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, var(--sf-1) 10%, var(--sf-1) 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, var(--sf-1) 10%, var(--sf-1) 92%, transparent 100%);
 }
 .umb-pill-v2 .umb-logo {
   width: 16px;
@@ -702,11 +702,11 @@
     rgba(255, 255, 255, 0.32) 100%
   );
   -webkit-mask:
-    linear-gradient(var(--surface-1) 0 0) content-box,
-    linear-gradient(var(--surface-1) 0 0);
+    linear-gradient(var(--sf-1) 0 0) content-box,
+    linear-gradient(var(--sf-1) 0 0);
   mask:
-    linear-gradient(var(--surface-1) 0 0) content-box,
-    linear-gradient(var(--surface-1) 0 0);
+    linear-gradient(var(--sf-1) 0 0) content-box,
+    linear-gradient(var(--sf-1) 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   mix-blend-mode: overlay;
@@ -1142,7 +1142,7 @@
 }
 
 .megsy-oil-field {
-  background-color: var(--surface-1);
+  background-color: var(--sf-1);
   background-image:
     radial-gradient(circle at 18% 14%, rgba(28, 112, 255, 0.82) 0 12%, transparent 34%),
     radial-gradient(circle at 82% 12%, rgba(226, 28, 86, 0.78) 0 10%, transparent 32%),
@@ -1760,7 +1760,7 @@ html[data-section="chat"] body .settings-desktop-canvas h6,
    GPU-only (transform/opacity), no JS, no canvas, no shader.
    ============================================================ */
 .dark-veil-css {
-  background-color: var(--surface-1);
+  background-color: var(--sf-1);
   background-image:
     radial-gradient(60% 50% at 20% 30%, hsla(265, 70%, 32%, 0.55), transparent 70%),
     radial-gradient(55% 45% at 80% 20%, hsla(210, 80%, 28%, 0.50), transparent 70%),
@@ -1836,7 +1836,7 @@ html[data-section="chat"] body .settings-desktop-canvas h6,
 
 /* ───── Auth page animated cosmic background ───── */
 .auth-bg {
-  background-color: var(--surface-1);
+  background-color: var(--sf-1);
   background-image:
     radial-gradient(ellipse 90% 70% at 15% 15%, rgba(33,165,236,0.45) 0%, transparent 55%),
     radial-gradient(ellipse 80% 60% at 85% 20%, rgba(144,210,245,0.30) 0%, transparent 50%),
@@ -2135,23 +2135,23 @@ svg {
 button[data-testid="mobile-composer-send"] {
   background: #ffffff !important;
   background-color: var(--ink-1) !important;
-  color: var(--surface-1) !important;
+  color: var(--sf-1) !important;
   border: 0 !important;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
-  -webkit-text-fill-color: var(--surface-1) !important;
+  -webkit-text-fill-color: var(--sf-1) !important;
 }
 
 .chat-composer-frame button[data-testid="mobile-composer-send"] svg,
 button[data-testid="mobile-composer-send"] svg {
-  color: var(--surface-1) !important;
-  stroke: var(--surface-1) !important;
+  color: var(--sf-1) !important;
+  stroke: var(--sf-1) !important;
 }
 
 .chat-composer-frame button[data-testid="mobile-composer-send"]:disabled,
 button[data-testid="mobile-composer-send"]:disabled {
   background: #ffffff !important;
   background-color: var(--ink-1) !important;
-  color: var(--surface-1) !important;
+  color: var(--sf-1) !important;
   opacity: 0.42 !important;
 }
 
@@ -2929,7 +2929,7 @@ body.app-fullscreen-active .mobile-sidebar-trigger {
 }
 
 .mobile-plus-glass-menu .gemini-glass-tile {
-  background: var(--chat-claude-control, var(--surface-3)) !important;
+  background: var(--chat-claude-control, var(--sf-3)) !important;
   background-blend-mode: normal;
   -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
@@ -3592,15 +3592,15 @@ html[dir="rtl"] .keep-ltr {
    surface. These selectors intentionally beat the legacy generic menu rules. */
 [data-plus-menu][data-integrations-sheet="true"] {
   padding: 0 !important;
-  background: var(--chat-claude-composer, var(--surface-2)) !important;
-  background-color: var(--chat-claude-composer, var(--surface-2)) !important;
+  background: var(--chat-claude-composer, var(--sf-2)) !important;
+  background-color: var(--chat-claude-composer, var(--sf-2)) !important;
   border: 0 !important;
   border-radius: 28px 28px 0 0 !important;
   box-shadow: none !important;
   overflow: hidden !important;
 }
 [data-plus-menu][data-integrations-sheet="true"] [data-connectors-search] {
-  background: var(--chat-claude-composer, var(--surface-2)) !important;
+  background: var(--chat-claude-composer, var(--sf-2)) !important;
   border: 0 !important;
   box-shadow: inset 0 0 0 1px hsl(var(--foreground) / 0.08) !important;
 }
@@ -3616,7 +3616,7 @@ html[dir="rtl"] .keep-ltr {
   outline: 0 !important;
 }
 [data-plus-menu][data-integrations-sheet="true"] [data-integration-row] {
-  background: var(--chat-claude-composer, var(--surface-2)) !important;
+  background: var(--chat-claude-composer, var(--sf-2)) !important;
   border: 0 !important;
   box-shadow: none !important;
 }
@@ -3665,15 +3665,15 @@ html[dir="rtl"] .keep-ltr {
 
 [data-mobile-sidebar-footer="true"] button[data-mobile-sidebar-footer-action="primary"] {
   background: #fff !important;
-  color: var(--surface-1) !important;
-  -webkit-text-fill-color: var(--surface-1) !important;
+  color: var(--sf-1) !important;
+  -webkit-text-fill-color: var(--sf-1) !important;
   border: 1px solid rgba(0, 0, 0, 0.22) !important;
   box-shadow: none !important;
 }
 
 [data-mobile-sidebar-footer="true"] button[data-mobile-sidebar-footer-action="primary"] * {
-  color: var(--surface-1) !important;
-  -webkit-text-fill-color: var(--surface-1) !important;
+  color: var(--sf-1) !important;
+  -webkit-text-fill-color: var(--sf-1) !important;
 }
 
 [data-mobile-sidebar-footer="true"] button[data-mobile-sidebar-footer-action="new"] {
@@ -3730,9 +3730,9 @@ html[data-theme="light"] #root {
 /* Neutralize hardcoded dark backgrounds on settings/help/profile/skills/library */
 html[data-theme="light"] main .bg-black,
 html[data-theme="light"] main [class*="bg-black"],
-html[data-theme="light"] main [style*="background-color: var(--surface-1)"],
-html[data-theme="light"] main [style*="background: var(--surface-1)"],
-html[data-theme="light"] main [style*="background:var(--surface-1)"] {
+html[data-theme="light"] main [style*="background-color: var(--sf-1)"],
+html[data-theme="light"] main [style*="background: var(--sf-1)"],
+html[data-theme="light"] main [style*="background:var(--sf-1)"] {
   background-color: hsl(var(--background)) !important;
   background-image: none !important;
 }
