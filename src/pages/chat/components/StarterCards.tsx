@@ -102,18 +102,11 @@ export function StarterCards({ onPick, className = "" }: StarterCardsProps) {
             key={c.id}
             type="button"
             onClick={() => handleCardClick(c, onPick)}
-            className="snap-start shrink-0 flex items-center gap-2.5 rounded-2xl border border-border/40 bg-background hover:bg-accent/60 active:scale-[0.98] transition-all px-2.5 py-2 text-start shadow-sm"
+            className="snap-start shrink-0 inline-flex items-center gap-1.5 rounded-full border border-border/40 bg-background hover:bg-accent/60 active:scale-[0.98] transition-all px-2.5 h-8 shadow-sm"
           >
-            <div className="grid place-items-center w-9 h-9 rounded-xl bg-muted text-foreground/70 shrink-0">
-              <c.Icon className="w-[18px] h-[18px]" strokeWidth={1.8} />
-            </div>
-            <span className="min-w-0 flex flex-col gap-0.5 pe-1">
-              <span className="text-[13px] font-semibold leading-tight text-foreground whitespace-nowrap">
-                {c.title}
-              </span>
-              <span className="text-[10.5px] leading-snug text-muted-foreground whitespace-nowrap">
-                {c.desc}
-              </span>
+            <c.Icon className="w-[14px] h-[14px] text-foreground/70 shrink-0" strokeWidth={1.9} />
+            <span className="text-[12px] font-medium text-foreground whitespace-nowrap">
+              {c.title}
             </span>
           </button>
         ))}
