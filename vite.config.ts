@@ -627,6 +627,7 @@ export default defineConfig({
     integrationAppTokenDevPlugin(),
     anythingApiDevPlugin(),
     manusAdminDevPlugin(),
+    devAgentDevPlugin(),
     computerAgentDevPlugin(),
     longRunDevPlugin(),
     mcpDevPlugin(),
