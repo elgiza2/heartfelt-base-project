@@ -132,7 +132,7 @@ export function DesktopSettingsLayout({
         )}
       >
         <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
-          <div className="absolute inset-0 bg-background" />
+          <div className="absolute inset-0 settings-canvas-bg" />
         </div>
 
         <div className="relative z-10 h-full w-full flex">

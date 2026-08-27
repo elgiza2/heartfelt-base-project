@@ -218,3 +218,8 @@ html.light .brand-word {
   color: var(--ink-1) !important;
   animation: none !important;
 }
+
+/* Settings canvas: soft grey page in light mode so the white cards read as
+   separate surfaces (dark mode keeps the standard background). */
+.settings-canvas-bg { background-color: hsl(var(--background)); }
+html.light .settings-canvas-bg { background-color: #f3f3f5; }
