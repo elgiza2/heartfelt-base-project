@@ -14,55 +14,48 @@ export interface StarterCardsProps {
   className?: string;
 }
 
-/** Every real service the app offers — no filler. */
+/** Every real service the app offers — no filler. Short labels, no descriptions. */
 const CARDS = [
   {
     id: "image",
     mode: "images",
     Icon: ImagePlus,
-    title: "Generate images",
-    desc: "Photoreal images and edits",
+    title: "Images",
   },
   {
     id: "web",
     mode: "code",
     Icon: Code2,
-    title: "Build a website",
-    desc: "Live page with real code",
+    title: "Website",
   },
   {
     id: "video",
     mode: "video",
     Icon: VideoIcon,
-    title: "Generate video",
-    desc: "Cinematic clips from a prompt",
+    title: "Video",
   },
   {
     id: "slides",
     mode: "slides",
     Icon: Presentation,
-    title: "Presentation",
-    desc: "Designed slides with charts",
+    title: "Slides",
   },
   {
     id: "research",
     mode: "deep-research",
     Icon: ScanSearch,
-    title: "Deep research",
-    desc: "Sourced, referenced report",
+    title: "Research",
   },
   {
     id: "docs",
     mode: "docs",
     Icon: FileText,
-    title: "Analyze documents",
-    desc: "Tables and answers from files",
+    title: "Documents",
   },
   {
     id: "integrations",
     Icon: Plug,
     title: "Integrations",
-    desc: "Connect and use your apps",
   },
 ];
 
