@@ -1,5 +1,14 @@
 import { useState } from "react";
-import { X } from "lucide-react";
+import {
+  X,
+  ImagePlus,
+  Code2,
+  Video as VideoIcon,
+  Presentation,
+  ScanSearch,
+  FileText,
+  Plug,
+} from "lucide-react";
 import researchImg from "@/assets/svc2-research.png";
 import imageImg from "@/assets/svc2-image.png";
 import videoImg from "@/assets/svc2-video.png";
