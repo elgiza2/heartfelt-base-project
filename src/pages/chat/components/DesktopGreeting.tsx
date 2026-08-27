@@ -13,10 +13,9 @@ interface DesktopGreetingProps {
 const entryTaglineKeys = ["greeting1", "greeting2", "greeting3", "greeting4", "greeting5"];
 
 /**
- * Desktop-only chat empty state. The line changes once per page entry and then
- * stays fixed, sitting over the wavy canvas background.
- *
- * NOTE: Desktop-only (hidden md:flex). Do not repurpose for mobile.
+ * Chat empty-state greeting. The line changes once per page entry and then
+ * stays fixed. Renders above the centered composer on desktop and centered
+ * in the middle of the screen on mobile (positioned by ChatComposerSection).
  */
 export const DesktopGreeting = (_: DesktopGreetingProps) => {
   const lang = useUserLang();
@@ -37,7 +36,7 @@ export const DesktopGreeting = (_: DesktopGreetingProps) => {
     <>
       {/* Flat unified surface — decorative wave removed. */}
 
-      <div className="relative z-[7] hidden md:flex items-center justify-center px-6 pb-6 w-full">
+      <div className="relative z-[7] flex items-center justify-center px-6 md:pb-6 w-full">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -53,7 +52,7 @@ export const DesktopGreeting = (_: DesktopGreetingProps) => {
             <p
               data-greeting
               dir="ltr"
-              className="max-w-4xl text-center text-[42px] font-semibold leading-[1.06] text-foreground drop-shadow-[0_0_28px_rgba(96,165,250,0.28)] lg:text-[58px]"
+              className="max-w-4xl text-center text-[30px] font-semibold leading-[1.12] text-foreground drop-shadow-[0_0_28px_rgba(96,165,250,0.28)] md:text-[42px] md:leading-[1.06] lg:text-[58px]"
               style={{ fontFamily: "'Instrument Serif', 'Fraunces', ui-serif, Georgia, serif" }}
             >
               {tagline}
