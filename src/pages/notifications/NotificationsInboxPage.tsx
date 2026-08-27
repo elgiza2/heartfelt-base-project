@@ -300,11 +300,11 @@ const ntiCss = `
 .nti-state {
   display: grid; place-items: center;
   padding: 60px 16px;
-  color: rgba(232,232,232,0.5);
+  color: hsl(var(--foreground) / 0.6);
 }
 .nti-empty { gap: 5px; text-align: center; }
 .nti-empty-title { margin: 0; font-size: 14px; font-weight: 600; color: var(--mn-fg); }
-.nti-empty-sub { margin: 0; font-size: 12.5px; color: rgba(232,232,232,0.5); }
+.nti-empty-sub { margin: 0; font-size: 12.5px; color: hsl(var(--foreground) / 0.6); }
 
 .nti-spacer { height: 28px; }
 
