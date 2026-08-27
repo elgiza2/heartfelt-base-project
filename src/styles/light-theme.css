@@ -209,3 +209,12 @@ html.light [data-sidebar] {
   background-color: #fbf8fa !important;
   border-right-color: var(--hairline) !important;
 }
+
+/* Brand wordmark: the silver→white shimmer is dark-mode only. In light mode
+   render solid ink so "Megsy" is legible in the sidebar / headers. */
+html.light .brand-word {
+  background: none !important;
+  -webkit-text-fill-color: var(--ink-1) !important;
+  color: var(--ink-1) !important;
+  animation: none !important;
+}

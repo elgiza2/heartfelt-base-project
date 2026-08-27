@@ -978,7 +978,7 @@ const AuthPage = () => {
                       <div className="space-y-2.5">
                         <button
                           onClick={handleGoogleLogin}
-                          className={`theme-fixed ${socialCls} !bg-white !text-background hover:!bg-foreground/90 border-foreground/30`}
+                          className={socialCls}
                         >
                           <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24">
                             <path
