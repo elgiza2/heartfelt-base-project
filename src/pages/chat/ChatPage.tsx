@@ -1896,6 +1896,27 @@ const ChatPage = () => {
       hiddenFromTranscript: isLearningAnswer,
     };
 
+    // ── Dev Agent: builds/edits real React projects in a cloud VM (@dev) ──
+    if (selectedAgent?.id === "dev") {
+      try {
+        const { runDevTurn } = await import("./services/runDevTurn");
+        await runDevTurn({
+          text,
+          userMsg,
+          localTurnId,
+          setMessages,
+          setInput,
+          setAttachedFiles,
+          createOrUpdateConversation,
+          saveMessage,
+          ownInsertedIdsRef,
+        });
+      } finally {
+        isSubmittingRef.current = false;
+      }
+      return;
+    }
+
     // ── Computer Agent: explicit @computer / Agent pick, or model-routed "needs a real computer" requests ──
     {
       const agentRequested = selectedAgent?.id === "computer";
