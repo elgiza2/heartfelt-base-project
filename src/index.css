@@ -873,7 +873,7 @@ button[data-slides-preview-button] svg,
     --muted-foreground: 0 0% 62%;       /* readable grey */
     --accent: 0 0% 20%;
     --accent-foreground: 0 0% 96%;
-    --destructive: 0 65% 52%;
+    --destructive: 0 78% 66%;           /* readable red on dark surfaces */
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 23%;
     --input: 0 0% 20%;
