@@ -199,10 +199,10 @@ export default function ManusKeysPage() {
       <div className="mx-auto w-full max-w-2xl space-y-5">
         <header className="flex items-center justify-between">
           <div>
-            <h1 className="text-xl font-semibold text-foreground">مفاتيح Manus</h1>
-            <p className="text-sm text-muted-foreground">
-              مجمّع المفاتيح — لو مفتاح فشل أو خلص رصيده يتحوّل تلقائيًا للتالي.
-            </p>
+            <h1 className="text-xl font-semibold text-foreground">
+              مفاتيح {PROVIDERS[provider].label}
+            </h1>
+            <p className="text-sm text-muted-foreground">{PROVIDERS[provider].hint}</p>
           </div>
           <button
             onClick={() => void refresh(password)}
@@ -212,6 +212,28 @@ export default function ManusKeysPage() {
             <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} />
           </button>
         </header>
+
+        <div className="flex items-center gap-2 rounded-2xl border border-border bg-card p-1">
+          {(Object.keys(PROVIDERS) as Provider[]).map((p) => (
+            <button
+              key={p}
+              type="button"
+              onClick={() => {
+                if (p === provider) return;
+                setProvider(p);
+                setKeys([]);
+                void refresh(password, PROVIDERS[p].endpoint);
+              }}
+              className={`h-9 flex-1 rounded-xl text-sm font-medium transition-colors ${
+                p === provider
+                  ? "bg-primary text-primary-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {PROVIDERS[p].label}
+            </button>
+          ))}
+        </div>
 
         <form onSubmit={onAdd} className="rounded-[22px] border border-border bg-card p-4 space-y-3">
           <div className="flex items-center gap-2 text-sm font-medium text-foreground">
