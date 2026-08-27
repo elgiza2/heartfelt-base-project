@@ -19,7 +19,6 @@ const CARDS = [
   {
     id: "image",
     mode: "images",
-    img: imageImg,
     Icon: ImagePlus,
     title: "Generate images",
     desc: "Photoreal images and edits",
@@ -27,7 +26,6 @@ const CARDS = [
   {
     id: "web",
     mode: "code",
-    img: webImg,
     Icon: Code2,
     title: "Build a website",
     desc: "Live page with real code",
@@ -35,7 +33,6 @@ const CARDS = [
   {
     id: "video",
     mode: "video",
-    img: videoImg,
     Icon: VideoIcon,
     title: "Generate video",
     desc: "Cinematic clips from a prompt",
@@ -43,7 +40,6 @@ const CARDS = [
   {
     id: "slides",
     mode: "slides",
-    img: slidesImg,
     Icon: Presentation,
     title: "Presentation",
     desc: "Designed slides with charts",
@@ -51,7 +47,6 @@ const CARDS = [
   {
     id: "research",
     mode: "deep-research",
-    img: researchImg,
     Icon: ScanSearch,
     title: "Deep research",
     desc: "Sourced, referenced report",
@@ -59,14 +54,12 @@ const CARDS = [
   {
     id: "docs",
     mode: "docs",
-    img: docsImg,
     Icon: FileText,
     title: "Analyze documents",
     desc: "Tables and answers from files",
   },
   {
     id: "integrations",
-    img: integrationsImg,
     Icon: Plug,
     title: "Integrations",
     desc: "Connect and use your apps",
